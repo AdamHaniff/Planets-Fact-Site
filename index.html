@@ -28,9 +28,9 @@
       </button>
     </header>
     <div class="planet-facts">
-      <span class="planet-facts__overview">Overview</span>
-      <span class="planet-facts__structure">Structure</span>
-      <span class="planet-facts__surface">Surface</span>
+      <span class="planet-facts__label">Overview</span>
+      <span class="planet-facts__label">Structure</span>
+      <span class="planet-facts__label">Surface</span>
     </div>
     <div class="planet-info">
       <img
@@ -64,6 +64,49 @@
               alt="Source icon"
           /></a>
         </div>
+      </div>
+      <div class="planet-info__data">
+        <div class="planet-info__data-container">
+          <span class="planet-info__data-name">Rotation Time</span>
+          <span class="planet-info__data-value">58.6 Days</span>
+        </div>
+        <div class="planet-info__data-container">
+          <span class="planet-info__data-name">Revolution Time</span>
+          <span class="planet-info__data-value">87.97 Days</span>
+        </div>
+        <div class="planet-info__data-container">
+          <span class="planet-info__data-name">Radius</span>
+          <span class="planet-info__data-value">2,439.7 KM</span>
+        </div>
+        <div class="planet-info__data-container">
+          <span class="planet-info__data-name">Average Temp.</span>
+          <span class="planet-info__data-value">430°C</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar__planet-container">
+        <div class="sidebar__color-name">
+          <svg
+            class="sidebar__planet-color"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <circle cx="10" cy="10" r="10" fill="#DEF4FC" />
+          </svg>
+          <span class="sidebar__planet-name">Mercury</span>
+        </div>
+        <button class="sidebar__chevron-btn" type="button">
+          <img
+            class="sidebar__chevron-icon"
+            src="./assets/icon-chevron.svg"
+            alt="Chevron icon"
+          />
+        </button>
       </div>
     </div>
   </body>
