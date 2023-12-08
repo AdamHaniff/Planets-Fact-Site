@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  background: #070724;
+  background-image: url("../assets/background-stars.svg");
+  background-position: top;
+  color: #fff;
+}
+
+.header {
+  padding: 1.6rem 2.4rem;
+  display: flex;
+  align-items: center;
+}
+.header__logo {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Antonio", sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: -0.105rem;
+  text-transform: uppercase;
+}
+.header__menu-btn {
+  background: none;
+  border: none;
+}
+
+.sidebar {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}/*# sourceMappingURL=main.css.map */

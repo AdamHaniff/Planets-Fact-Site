@@ -14,5 +14,67 @@ $color-redFox: #cd5120;
 $color-topaz: #1ec1a2;
 $color-ultramarineBlue: #2d68f0;
 $color-iron: #d8d8d8;
+$color-ebony: #070724;
 
 // ********* FONT-FAMILIES *********
+$font-antonio: "Antonio", sans-serif;
+$font-leagueSpartan: "League Spartan", sans-serif;
+
+// ********* FONT-WEIGHTS *********
+$fw-400: 400;
+$fw-700: 700;
+
+// ************* BASE *************
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  background: #070724;
+  background-image: url("../assets/background-stars.svg");
+  background-position: top;
+  color: $color-white;
+}
+
+// ********* 375px LAYOUT *********
+
+// ************ HEADER ***********
+.header {
+  padding: 1.6rem 2.4rem;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    text-decoration: none;
+    color: $color-white;
+    font-family: $font-antonio;
+    font-size: 2.8rem;
+    letter-spacing: -0.105rem;
+    text-transform: uppercase;
+  }
+
+  &__menu-btn {
+    background: none;
+    border: none;
+    // transform: translateY(0.4rem);
+  }
+}
+
+// *********** SIDEBAR ************
+.sidebar {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
