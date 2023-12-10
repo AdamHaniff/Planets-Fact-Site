@@ -41,7 +41,7 @@ html {
 body {
   background: #070724;
   background-image: url("../assets/background-stars.svg");
-  background-position: top;
+  background-size: cover;
   color: $color-white;
 }
 
@@ -51,7 +51,7 @@ body {
 .header {
   padding: 1.6rem 2.4rem;
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
 
   &__logo {
@@ -66,9 +66,39 @@ body {
   &__menu-btn {
     background: none;
     border: none;
-    // transform: translateY(0.4rem);
+    transform: translateY(0.4rem);
   }
 }
+
+// ********* PLANET-FACTS *********
+.planet-facts {
+  display: flex;
+  justify-content: space-between;
+  // padding: 2rem 2.4rem;
+  padding: 2rem 2.4rem 0;
+  border-top: 0.1rem solid $color-white20Percent;
+  border-bottom: 0.1rem solid $color-white20Percent;
+  font-family: $font-leagueSpartan;
+  font-size: 1.2rem;
+  font-weight: $fw-700;
+  letter-spacing: 0.1929rem;
+  text-transform: uppercase;
+
+  &__label {
+    padding-bottom: 1.7rem;
+  }
+
+  & :first-child {
+    border-bottom: 0.4rem solid $color-celestialBlue;
+  }
+
+  & :nth-child(2),
+  :nth-child(3) {
+    color: $color-white50Percent;
+  }
+}
+
+// ********** PLANET-INFO **********
 
 // *********** SIDEBAR ************
 .sidebar {
