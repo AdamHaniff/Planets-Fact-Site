@@ -85,6 +85,32 @@ body {
   line-height: 2.2rem;
   margin-bottom: 3.2rem;
 }
+.planet-info__data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.planet-info__data-container {
+  border: 0.1rem solid rgba(255, 255, 255, 0.2);
+  padding: 0.9rem 2.4rem 1.3rem;
+  display: flex;
+  align-items: center;
+}
+.planet-info__data-name {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.6rem;
+  letter-spacing: 0.0727rem;
+  text-transform: uppercase;
+}
+.planet-info__data-value {
+  font-family: "Antonio", sans-serif;
+  font-size: 2rem;
+  letter-spacing: -0.075rem;
+  text-transform: uppercase;
+}
 
 .source {
   display: flex;
@@ -93,6 +119,23 @@ body {
   font-family: "League Spartan", sans-serif;
   font-size: 1.5rem;
   line-height: 2.5rem;
+  margin-bottom: 2.8rem;
+}
+.source__link-window {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.source__link {
+  color: rgba(255, 255, 255, 0.5);
+}
+.source__window {
+  height: 1.2rem;
+  width: 1.2rem;
+  transform: translateY(-0.1rem);
+}
+.source__window-icon {
+  display: block;
 }
 
 .sidebar {

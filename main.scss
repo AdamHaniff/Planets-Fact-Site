@@ -125,6 +125,37 @@ body {
     line-height: 2.2rem;
     margin-bottom: 3.2rem;
   }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    &-container {
+      border: 0.1rem solid $color-white20Percent;
+      padding: 0.9rem 2.4rem 1.3rem;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+    }
+
+    &-name {
+      color: $color-white50Percent;
+      font-family: $font-leagueSpartan;
+      font-size: 1.1rem;
+      font-weight: $fw-700;
+      line-height: 1.6rem;
+      letter-spacing: 0.0727rem;
+      text-transform: uppercase;
+    }
+
+    &-value {
+      font-family: $font-antonio;
+      font-size: 2rem;
+      letter-spacing: -0.075rem;
+      text-transform: uppercase;
+    }
+  }
 }
 
 // ************ SOURCE ************
@@ -135,6 +166,27 @@ body {
   font-family: $font-leagueSpartan;
   font-size: 1.5rem;
   line-height: 2.5rem;
+  margin-bottom: 2.8rem;
+
+  &__link-window {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__link {
+    color: $color-white50Percent;
+  }
+
+  &__window {
+    height: 1.2rem;
+    width: 1.2rem;
+    transform: translateY(-0.1rem);
+  }
+
+  &__window-icon {
+    display: block;
+  }
 }
 
 // *********** SIDEBAR ************
