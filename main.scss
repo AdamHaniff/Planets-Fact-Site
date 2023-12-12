@@ -74,7 +74,6 @@ body {
 .planet-facts {
   display: flex;
   justify-content: space-between;
-  // padding: 2rem 2.4rem;
   padding: 2rem 2.4rem 0;
   border-top: 0.1rem solid $color-white20Percent;
   border-bottom: 0.1rem solid $color-white20Percent;
@@ -84,12 +83,12 @@ body {
   letter-spacing: 0.1929rem;
   text-transform: uppercase;
 
-  &__label {
+  &__label-container {
     padding-bottom: 1.7rem;
-  }
 
-  & :first-child {
-    border-bottom: 0.4rem solid $color-celestialBlue;
+    &:first-child {
+      border-bottom: 0.4rem solid $color-celestialBlue;
+    }
   }
 
   & :nth-child(2),
@@ -135,7 +134,7 @@ body {
       border: 0.1rem solid $color-white20Percent;
       padding: 0.9rem 2.4rem 1.3rem;
       display: flex;
-      // justify-content: space-between;
+      justify-content: space-between;
       align-items: center;
     }
 
@@ -147,6 +146,7 @@ body {
       line-height: 1.6rem;
       letter-spacing: 0.0727rem;
       text-transform: uppercase;
+      transform: translateY(0.4rem);
     }
 
     &-value {
@@ -197,3 +197,5 @@ body {
   top: 0;
   left: 0;
 }
+
+// * CLASSES USED WITH JAVASCRIPT *

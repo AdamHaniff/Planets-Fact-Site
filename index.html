@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/main.css" />
+    <script type="module" defer src="./main.js"></script>
     <title>Planets Fact Site</title>
   </head>
   <body>
@@ -35,9 +36,15 @@
       </button>
     </header>
     <div class="planet-facts">
-      <span class="planet-facts__label">Overview</span>
-      <span class="planet-facts__label">Structure</span>
-      <span class="planet-facts__label">Surface</span>
+      <div class="planet-facts__label-container">
+        <span class="planet-facts__label">Overview</span>
+      </div>
+      <div class="planet-facts__label-container">
+        <span class="planet-facts__label">Structure</span>
+      </div>
+      <div class="planet-facts__label-container">
+        <span class="planet-facts__label">Surface</span>
+      </div>
     </div>
     <div class="planet-info">
       <img
