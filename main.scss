@@ -85,15 +85,6 @@ body {
 
   &__label-container {
     padding-bottom: 1.7rem;
-
-    &:first-child {
-      border-bottom: 0.4rem solid $color-celestialBlue;
-    }
-  }
-
-  & :nth-child(2),
-  :nth-child(3) {
-    color: $color-white50Percent;
   }
 }
 
@@ -199,3 +190,14 @@ body {
 }
 
 // * CLASSES USED WITH JAVASCRIPT *
+.container--selected {
+  border-bottom: 0.4rem solid $color-celestialBlue;
+}
+
+.label--selected {
+  color: $color-white;
+}
+
+.label--not-selected {
+  color: $color-white50Percent;
+}

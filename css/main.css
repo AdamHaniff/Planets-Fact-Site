@@ -53,13 +53,6 @@ body {
 .planet-facts__label-container {
   padding-bottom: 1.7rem;
 }
-.planet-facts__label-container:first-child {
-  border-bottom: 0.4rem solid #419ebb;
-}
-.planet-facts :nth-child(2),
-.planet-facts :nth-child(3) {
-  color: rgba(255, 255, 255, 0.5);
-}
 
 .planet-info {
   padding: 9.5rem 2.4rem 4.7rem;
@@ -146,4 +139,16 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.container--selected {
+  border-bottom: 0.4rem solid #419ebb;
+}
+
+.label--selected {
+  color: #fff;
+}
+
+.label--not-selected {
+  color: rgba(255, 255, 255, 0.5);
 }/*# sourceMappingURL=main.css.map */
