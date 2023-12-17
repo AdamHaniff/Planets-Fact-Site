@@ -40,18 +40,8 @@ function deselectLabel(label) {
   labelContainer.style.borderBottom = "initial";
 }
 
-planetFacts.addEventListener("click", function (e) {
-  const target = e.target;
-  if (!target.classList.contains("planet-facts__label")) return;
-
-  for (let label of planetFactsLabel) {
-    if (label === target) {
-      selectLabel(target);
-    } else {
-      deselectLabel(label);
-    }
-  }
-
+// FUNCTIONS
+function updatePlanetInfo(target) {
   const targetTextContent = target.textContent.toLowerCase();
 
   if (targetTextContent === currentLabelTextContent) {
@@ -73,4 +63,30 @@ planetFacts.addEventListener("click", function (e) {
     sourceLink.href = currentPlanetData.structure.source;
     sourceWindow.href = currentPlanetData.structure.source;
   }
-});
+
+  if (targetTextContent === "surface") {
+    planetImage.src = currentPlanetData.images.geology;
+    planetDetails.innerHTML = currentPlanetData.geology.content;
+    sourceLink.href = currentPlanetData.geology.source;
+    sourceWindow.href = currentPlanetData.geology.source;
+  }
+}
+
+// EVENT LISTENER CALLBACK FUNCTIONS
+function handlePlanetFactsLabelClick(e) {
+  const target = e.target;
+  if (!target.classList.contains("planet-facts__label")) return;
+
+  for (let label of planetFactsLabel) {
+    if (label === target) {
+      selectLabel(target);
+    } else {
+      deselectLabel(label);
+    }
+  }
+
+  updatePlanetInfo(target);
+}
+
+// EVENT LISTENERS
+planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
