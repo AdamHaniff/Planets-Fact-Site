@@ -2,6 +2,7 @@
 
 // ************ COLORS ************
 $color-white: #fff;
+$color-white10Percent: rgba(255, 255, 255, 0.1);
 $color-white20Percent: rgba(255, 255, 255, 0.2);
 $color-white50Percent: rgba(255, 255, 255, 0.5);
 $color-white75Percent: rgba(255, 255, 255, 0.75);
@@ -181,18 +182,63 @@ body {
 }
 
 // *********** SIDEBAR ************
-.sidebar {
-  // opacity: 0;
-  // visibility: hidden;
-  width: 100%;
-  height: 100%;
-  border-top: 0.1rem solid $color-white20Percent;
-  padding: 4.4rem 3.2rem 6.7rem 2.4rem;
-}
 
+// HAVE TO DELETE THIS
 .planet-facts,
 .planet-info {
   display: none;
+}
+
+.sidebar {
+  // opacity: 0;
+  // visibility: hidden;
+  width: 100vw;
+  height: calc(100vh - 6.835rem);
+  border-top: 0.1rem solid $color-white20Percent;
+  padding: 4.4rem 3.2rem 6.7rem 2.4rem;
+  background: $color-ebony;
+
+  &__planet-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:first-child) {
+      padding-top: 2rem;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 0.1rem solid $color-white10Percent;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &__color-name {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+  }
+
+  &__planet-name {
+    font-family: $font-leagueSpartan;
+    font-size: 1.8rem;
+    font-weight: $fw-700;
+    line-height: 2.5rem;
+    letter-spacing: 0.1364rem;
+    text-transform: uppercase;
+  }
+
+  &__chevron-btn,
+  &__chevron-icon {
+    display: block;
+    width: 0.6rem;
+    height: 1rem;
+  }
+
+  &__chevron-btn {
+    background: none;
+    border: none;
+  }
 }
 
 // * CLASSES USED WITH JAVASCRIPT *

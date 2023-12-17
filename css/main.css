@@ -133,16 +133,51 @@ body {
   display: block;
 }
 
-.sidebar {
-  width: 100%;
-  height: 100%;
-  border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
-  padding: 4.4rem 3.2rem 6.7rem 2.4rem;
-}
-
 .planet-facts,
 .planet-info {
   display: none;
+}
+
+.sidebar {
+  width: 100vw;
+  height: calc(100vh - 6.835rem);
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
+  padding: 4.4rem 3.2rem 6.7rem 2.4rem;
+  background: #070724;
+}
+.sidebar__planet-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar__planet-container:not(:first-child) {
+  padding-top: 2rem;
+}
+.sidebar__planet-container:not(:last-child) {
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2rem;
+}
+.sidebar__color-name {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+.sidebar__planet-name {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  letter-spacing: 0.1364rem;
+  text-transform: uppercase;
+}
+.sidebar__chevron-btn, .sidebar__chevron-icon {
+  display: block;
+  width: 0.6rem;
+  height: 1rem;
+}
+.sidebar__chevron-btn {
+  background: none;
+  border: none;
 }
 
 .container--selected {
