@@ -8,7 +8,10 @@ let currentPlanetData = planets.find(
   (planet) => planet.name.toLowerCase() === currentPlanet
 );
 let currentLabelTextContent = "overview";
+const headerMenuBtn = document.querySelector(".header__menu-btn");
+const headerMenuIcon = document.querySelector(".header__menu-icon");
 const planetFacts = document.querySelector(".planet-facts");
+const planetInfo = document.querySelector(".planet-info");
 const planetFactsLabel = document.querySelectorAll(".planet-facts__label");
 const planetImage = document.querySelector(".planet-info__img");
 const planetDetails = document.querySelector(".planet-info__details");
@@ -90,3 +93,8 @@ function handlePlanetFactsLabelClick(e) {
 
 // EVENT LISTENERS
 planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
+
+headerMenuBtn.addEventListener("click", function (e) {
+  const target = e.target.closest(".header__menu-btn");
+  if (!target) return;
+});

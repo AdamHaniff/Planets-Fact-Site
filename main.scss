@@ -65,9 +65,12 @@ body {
   }
 
   &__menu-btn {
+    width: 2.4rem;
+    height: 1.7rem;
+    display: block;
     background: none;
     border: none;
-    transform: translateY(0.4rem);
+    transform: translateY(0.35rem);
   }
 }
 
@@ -182,21 +185,17 @@ body {
 }
 
 // *********** SIDEBAR ************
-
-// HAVE TO DELETE THIS
-.planet-facts,
-.planet-info {
-  display: none;
-}
-
 .sidebar {
-  // opacity: 0;
-  // visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
   width: 100vw;
   height: calc(100vh - 6.835rem);
+  position: absolute;
   border-top: 0.1rem solid $color-white20Percent;
-  padding: 4.4rem 3.2rem 6.7rem 2.4rem;
+  padding: 4.4rem 2.4rem 6.7rem;
   background: $color-ebony;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-in-out;
 
   &__planet-container {
     display: flex;
@@ -238,10 +237,20 @@ body {
   &__chevron-btn {
     background: none;
     border: none;
+    transform: translateX(-0.8rem);
   }
 }
 
 // * CLASSES USED WITH JAVASCRIPT *
+.hidden {
+  display: none;
+}
+
+.sidebar--open {
+  opacity: 1;
+  visibility: initial;
+}
+
 .container--selected {
   border-bottom: 0.4rem solid $color-celestialBlue;
 }
