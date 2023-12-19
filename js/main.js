@@ -4,9 +4,7 @@ import planets from "./data";
 
 // VARIABLES
 let currentPlanet = "mercury";
-let currentPlanetData = planets.find(
-  (planet) => planet.name.toLowerCase() === currentPlanet
-);
+let currentPlanetData = planets[0];
 let currentLabelTextContent = "overview";
 const headerMenuBtn = document.querySelector(".header__menu-btn");
 const headerMenuIcon = document.querySelector(".header__menu-icon");
@@ -17,6 +15,7 @@ const planetImage = document.querySelector(".planet-info__img");
 const planetDetails = document.querySelector(".planet-info__details");
 const sourceLink = document.querySelector(".source__link");
 const sourceWindow = document.querySelector(".source__window");
+const sidebar = document.querySelector(".sidebar");
 
 // HELPER FUNCTIONS
 function selectLabel(target) {
@@ -91,10 +90,37 @@ function handlePlanetFactsLabelClick(e) {
   updatePlanetInfo(target);
 }
 
-// EVENT LISTENERS
-planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
-
-headerMenuBtn.addEventListener("click", function (e) {
+function handleHeaderMenuBtnClick(e) {
   const target = e.target.closest(".header__menu-btn");
   if (!target) return;
-});
+
+  // Check if the 'sidebar' is already open
+  const isSidebarOpen = sidebar.classList.contains("sidebar--open");
+  if (isSidebarOpen) {
+    // Change color of 'headerMenuIcon' back to original color
+    headerMenuIcon.classList.remove("header__menu-icon--clicked");
+
+    // Hide 'sidebar'
+    sidebar.classList.remove("sidebar--open");
+
+    // Display 'planetFacts' and 'planetInfo'
+    planetFacts.classList.remove("hidden");
+    planetInfo.classList.remove("hidden");
+
+    return;
+  }
+
+  // Change color of 'headerMenuIcon'
+  headerMenuIcon.classList.add("header__menu-icon--clicked");
+
+  // Hide 'planetFacts' and 'planetInfo'
+  planetFacts.classList.add("hidden");
+  planetInfo.classList.add("hidden");
+
+  // Display 'sidebar'
+  sidebar.classList.add("sidebar--open");
+}
+
+// EVENT LISTENERS
+planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
+headerMenuBtn.addEventListener("click", handleHeaderMenuBtnClick);

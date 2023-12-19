@@ -4,6 +4,7 @@
 $color-white: #fff;
 $color-white10Percent: rgba(255, 255, 255, 0.1);
 $color-white20Percent: rgba(255, 255, 255, 0.2);
+$color-white25Percent: rgba(255, 255, 255, 0.25);
 $color-white50Percent: rgba(255, 255, 255, 0.5);
 $color-white75Percent: rgba(255, 255, 255, 0.75);
 $color-celestialBlue: #419ebb;
@@ -54,6 +55,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 0.1rem solid $color-white20Percent;
 
   &__logo {
     text-decoration: none;
@@ -79,7 +81,6 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 2rem 2.4rem 0;
-  border-top: 0.1rem solid $color-white20Percent;
   border-bottom: 0.1rem solid $color-white20Percent;
   font-family: $font-leagueSpartan;
   font-size: 1.2rem;
@@ -189,13 +190,13 @@ body {
   opacity: 0;
   visibility: hidden;
   width: 100vw;
-  height: calc(100vh - 6.835rem);
+  height: calc(100vh - 6.926rem);
   position: absolute;
-  border-top: 0.1rem solid $color-white20Percent;
+  top: 6.926rem;
   padding: 4.4rem 2.4rem 6.7rem;
   background: $color-ebony;
   transform: translateX(-100%);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   &__planet-container {
     display: flex;
@@ -246,9 +247,14 @@ body {
   display: none;
 }
 
+.header__menu-icon--clicked {
+  fill: $color-white25Percent;
+}
+
 .sidebar--open {
   opacity: 1;
   visibility: initial;
+  transform: initial;
 }
 
 .container--selected {
