@@ -12,6 +12,7 @@ const planetFacts = document.querySelector(".planet-facts");
 const planetInfo = document.querySelector(".planet-info");
 const planetFactsLabel = document.querySelectorAll(".planet-facts__label");
 const planetImage = document.querySelector(".planet-info__img");
+const planetName = document.querySelector(".planet-info__name");
 const planetDetails = document.querySelector(".planet-info__details");
 const sourceLink = document.querySelector(".source__link");
 const sourceWindow = document.querySelector(".source__window");
@@ -124,3 +125,36 @@ function handleHeaderMenuBtnClick(e) {
 // EVENT LISTENERS
 planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
 headerMenuBtn.addEventListener("click", handleHeaderMenuBtnClick);
+
+sidebar.addEventListener("click", function (e) {
+  const sidebarPlanetContainer = e.target.closest(".sidebar__planet-container");
+  if (!sidebarPlanetContainer) return;
+
+  const sidebarPlanetName = sidebarPlanetContainer
+    .querySelector(".sidebar__planet-name")
+    .textContent.toLowerCase();
+
+  // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
+  currentPlanet = sidebarPlanetName;
+  currentPlanetData = planets.find(
+    (planet) => planet.name.toLowerCase() === currentPlanet
+  );
+  currentLabelTextContent = "overview";
+
+  // Hide the 'sidebar'
+  sidebar.classList.remove("sidebar--open");
+  headerMenuIcon.classList.remove("header__menu-icon--clicked");
+
+  // I NEED TO UPDATE THE BORDER BOTTOM COLOR TO THE PLANET THAT WAS CLICKED
+
+  // Update HTML in 'planetInfo'
+  planetImage.src = currentPlanetData.images.planet;
+  planetName.textContent = currentPlanetData.name;
+  planetDetails.textContent = currentPlanetData.overview.content;
+  sourceLink.href = currentPlanetData.overview.source;
+  sourceWindow.href = currentPlanetData.overview.source;
+
+  // Display 'planetFacts' and 'planetInfo'
+  planetFacts.classList.remove("hidden");
+  planetInfo.classList.remove("hidden");
+});
