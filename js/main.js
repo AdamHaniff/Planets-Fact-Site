@@ -16,6 +16,7 @@ const planetName = document.querySelector(".planet-info__name");
 const planetDetails = document.querySelector(".planet-info__details");
 const sourceLink = document.querySelector(".source__link");
 const sourceWindow = document.querySelector(".source__window");
+const planetDataValue = document.querySelectorAll(".planet-info__data-value");
 const sidebar = document.querySelector(".sidebar");
 
 // HELPER FUNCTIONS
@@ -145,7 +146,11 @@ sidebar.addEventListener("click", function (e) {
   sidebar.classList.remove("sidebar--open");
   headerMenuIcon.classList.remove("header__menu-icon--clicked");
 
-  // I NEED TO UPDATE THE BORDER BOTTOM COLOR TO THE PLANET THAT WAS CLICKED
+  // Change border-bottom color of the overview label container to the planet's border color
+  const overviewLabelContainer = document.querySelector(
+    ".planet-facts__label-container"
+  );
+  overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.borderColor}`;
 
   // Update HTML in 'planetInfo'
   planetImage.src = currentPlanetData.images.planet;
@@ -153,6 +158,17 @@ sidebar.addEventListener("click", function (e) {
   planetDetails.textContent = currentPlanetData.overview.content;
   sourceLink.href = currentPlanetData.overview.source;
   sourceWindow.href = currentPlanetData.overview.source;
+
+  const planetDataValues = [
+    currentPlanetData.rotation,
+    currentPlanetData.revolution,
+    currentPlanetData.radius,
+    currentPlanetData.temperature,
+  ];
+
+  planetDataValue.forEach((value, i) => {
+    value[i].textContent = planetDataValues[i];
+  });
 
   // Display 'planetFacts' and 'planetInfo'
   planetFacts.classList.remove("hidden");
