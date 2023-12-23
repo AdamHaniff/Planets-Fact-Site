@@ -146,6 +146,14 @@ sidebar.addEventListener("click", function (e) {
   sidebar.classList.remove("sidebar--open");
   headerMenuIcon.classList.remove("header__menu-icon--clicked");
 
+  // Remove 'label--selected' class from label that has the class
+  for (let label of planetFactsLabel) {
+    if (label.classList.contains("label--selected")) {
+      label.classList.remove("label--selected");
+      label.classList.add("label--not-selected");
+    }
+  }
+
   // Change border-bottom color of the overview label container to the planet's border color
   const overviewLabelContainer = document.querySelector(
     ".planet-facts__label-container"
@@ -159,15 +167,15 @@ sidebar.addEventListener("click", function (e) {
   sourceLink.href = currentPlanetData.overview.source;
   sourceWindow.href = currentPlanetData.overview.source;
 
-  const planetDataValues = [
+  const values = [
     currentPlanetData.rotation,
     currentPlanetData.revolution,
     currentPlanetData.radius,
     currentPlanetData.temperature,
   ];
 
-  planetDataValue.forEach((value, i) => {
-    value[i].textContent = planetDataValues[i];
+  planetDataValue.forEach((el, i) => {
+    el.textContent = values[i];
   });
 
   // Display 'planetFacts' and 'planetInfo'
