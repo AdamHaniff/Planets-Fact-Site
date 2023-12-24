@@ -146,13 +146,23 @@ sidebar.addEventListener("click", function (e) {
   sidebar.classList.remove("sidebar--open");
   headerMenuIcon.classList.remove("header__menu-icon--clicked");
 
-  // Remove 'label--selected' class from label that has the class
+  // Deselect the label that is currently selected and remove the border-bottom from that label's container
   for (let label of planetFactsLabel) {
     if (label.classList.contains("label--selected")) {
+      // Remove 'label--selected' class from label that has the class
       label.classList.remove("label--selected");
       label.classList.add("label--not-selected");
+
+      // Remove border-bottom from that label's container
+      const labelContainer = label.closest(".planet-facts__label-container");
+      labelContainer.style.borderBottom = "initial";
     }
   }
+
+  // Give the overview label the "label--selected" class
+  const overviewLabel = planetFactsLabel[0];
+  overviewLabel.classList.remove("label--not-selected");
+  overviewLabel.classList.add("label--selected");
 
   // Change border-bottom color of the overview label container to the planet's border color
   const overviewLabelContainer = document.querySelector(
