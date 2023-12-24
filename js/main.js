@@ -44,6 +44,11 @@ function deselectLabel(label) {
   labelContainer.style.borderBottom = "initial";
 }
 
+function hideSidebar(headerMenuIcon, sidebar) {
+  headerMenuIcon.classList.remove("header__menu-icon--clicked");
+  sidebar.classList.remove("sidebar--open");
+}
+
 // FUNCTIONS
 function updatePlanetInfo(target) {
   const targetTextContent = target.textContent.toLowerCase();
@@ -76,6 +81,48 @@ function updatePlanetInfo(target) {
   }
 }
 
+function selectOverviewLabel() {
+  // Give the overview label the "label--selected" class
+  const overviewLabel = planetFactsLabel[0];
+  overviewLabel.classList.remove("label--not-selected");
+  overviewLabel.classList.add("label--selected");
+
+  // Change border-bottom color of the overview label container to the planet's border color
+  const overviewLabelContainer = document.querySelector(
+    ".planet-facts__label-container"
+  );
+  overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.borderColor}`;
+}
+
+function updateHTML() {
+  planetImage.src = currentPlanetData.images.planet;
+  planetName.textContent = currentPlanetData.name;
+  planetDetails.textContent = currentPlanetData.overview.content;
+  sourceLink.href = currentPlanetData.overview.source;
+  sourceWindow.href = currentPlanetData.overview.source;
+
+  const values = [
+    currentPlanetData.rotation,
+    currentPlanetData.revolution,
+    currentPlanetData.radius,
+    currentPlanetData.temperature,
+  ];
+
+  planetDataValue.forEach((el, i) => {
+    el.textContent = values[i];
+  });
+}
+
+function displayFactsAndInfo() {
+  planetFacts.classList.remove("hidden");
+  planetInfo.classList.remove("hidden");
+}
+
+function hideFactsAndInfo() {
+  planetFacts.classList.add("hidden");
+  planetInfo.classList.add("hidden");
+}
+
 // EVENT LISTENER CALLBACK FUNCTIONS
 function handlePlanetFactsLabelClick(e) {
   const target = e.target;
@@ -99,15 +146,11 @@ function handleHeaderMenuBtnClick(e) {
   // Check if the 'sidebar' is already open
   const isSidebarOpen = sidebar.classList.contains("sidebar--open");
   if (isSidebarOpen) {
-    // Change color of 'headerMenuIcon' back to original color
-    headerMenuIcon.classList.remove("header__menu-icon--clicked");
-
-    // Hide 'sidebar'
-    sidebar.classList.remove("sidebar--open");
+    // Change color of 'headerMenuIcon' and hide the 'sidebar'
+    hideSidebar(headerMenuIcon, sidebar);
 
     // Display 'planetFacts' and 'planetInfo'
-    planetFacts.classList.remove("hidden");
-    planetInfo.classList.remove("hidden");
+    displayFactsAndInfo();
 
     return;
   }
@@ -116,8 +159,7 @@ function handleHeaderMenuBtnClick(e) {
   headerMenuIcon.classList.add("header__menu-icon--clicked");
 
   // Hide 'planetFacts' and 'planetInfo'
-  planetFacts.classList.add("hidden");
-  planetInfo.classList.add("hidden");
+  hideFactsAndInfo();
 
   // Display 'sidebar'
   sidebar.classList.add("sidebar--open");
@@ -142,53 +184,22 @@ sidebar.addEventListener("click", function (e) {
   );
   currentLabelTextContent = "overview";
 
-  // Hide the 'sidebar'
-  sidebar.classList.remove("sidebar--open");
-  headerMenuIcon.classList.remove("header__menu-icon--clicked");
+  // Change color of 'headerMenuIcon' and hide the 'sidebar'
+  hideSidebar(headerMenuIcon, sidebar);
 
   // Deselect the label that is currently selected and remove the border-bottom from that label's container
   for (let label of planetFactsLabel) {
     if (label.classList.contains("label--selected")) {
-      // Remove 'label--selected' class from label that has the class
-      label.classList.remove("label--selected");
-      label.classList.add("label--not-selected");
-
-      // Remove border-bottom from that label's container
-      const labelContainer = label.closest(".planet-facts__label-container");
-      labelContainer.style.borderBottom = "initial";
+      deselectLabel(label);
     }
   }
 
-  // Give the overview label the "label--selected" class
-  const overviewLabel = planetFactsLabel[0];
-  overviewLabel.classList.remove("label--not-selected");
-  overviewLabel.classList.add("label--selected");
-
-  // Change border-bottom color of the overview label container to the planet's border color
-  const overviewLabelContainer = document.querySelector(
-    ".planet-facts__label-container"
-  );
-  overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.borderColor}`;
+  // Select the overview label and change the border-bottom color of the label's container to the planet's border color
+  selectOverviewLabel();
 
   // Update HTML in 'planetInfo'
-  planetImage.src = currentPlanetData.images.planet;
-  planetName.textContent = currentPlanetData.name;
-  planetDetails.textContent = currentPlanetData.overview.content;
-  sourceLink.href = currentPlanetData.overview.source;
-  sourceWindow.href = currentPlanetData.overview.source;
-
-  const values = [
-    currentPlanetData.rotation,
-    currentPlanetData.revolution,
-    currentPlanetData.radius,
-    currentPlanetData.temperature,
-  ];
-
-  planetDataValue.forEach((el, i) => {
-    el.textContent = values[i];
-  });
+  updateHTML();
 
   // Display 'planetFacts' and 'planetInfo'
-  planetFacts.classList.remove("hidden");
-  planetInfo.classList.remove("hidden");
+  displayFactsAndInfo();
 });
