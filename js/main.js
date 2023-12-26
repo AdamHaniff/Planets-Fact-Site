@@ -123,6 +123,14 @@ function hideFactsAndInfo() {
   planetInfo.classList.add("hidden");
 }
 
+function updateCurrentPlanet(sidebarPlanetName) {
+  currentPlanet = sidebarPlanetName;
+  currentPlanetData = planets.find(
+    (planet) => planet.name.toLowerCase() === currentPlanet
+  );
+  currentLabelTextContent = "overview";
+}
+
 // EVENT LISTENER CALLBACK FUNCTIONS
 function handlePlanetFactsLabelClick(e) {
   const target = e.target;
@@ -178,11 +186,7 @@ sidebar.addEventListener("click", function (e) {
     .textContent.toLowerCase();
 
   // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
-  currentPlanet = sidebarPlanetName;
-  currentPlanetData = planets.find(
-    (planet) => planet.name.toLowerCase() === currentPlanet
-  );
-  currentLabelTextContent = "overview";
+  updateCurrentPlanet(sidebarPlanetName);
 
   // Change color of 'headerMenuIcon' and hide the 'sidebar'
   hideSidebar(headerMenuIcon, sidebar);
