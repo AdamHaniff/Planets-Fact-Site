@@ -49,6 +49,12 @@ function hideSidebar(headerMenuIcon, sidebar) {
   sidebar.classList.remove("sidebar--open");
 }
 
+function displaySidebar() {
+  headerMenuIcon.classList.add("header__menu-icon--clicked");
+  hideFactsAndInfo();
+  sidebar.classList.add("sidebar--open");
+}
+
 // FUNCTIONS
 function updatePlanetInfo(target) {
   const targetTextContent = target.textContent.toLowerCase();
@@ -163,14 +169,8 @@ function handleHeaderMenuBtnClick(e) {
     return;
   }
 
-  // Change color of 'headerMenuIcon'
-  headerMenuIcon.classList.add("header__menu-icon--clicked");
-
-  // Hide 'planetFacts' and 'planetInfo'
-  hideFactsAndInfo();
-
-  // Display 'sidebar'
-  sidebar.classList.add("sidebar--open");
+  // Change color of 'headerMenuIcon', hide 'planetFacts' and 'planetInfo', and display 'sidebar'
+  displaySidebar();
 }
 
 // EVENT LISTENERS
