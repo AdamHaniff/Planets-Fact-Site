@@ -173,11 +173,7 @@ function handleHeaderMenuBtnClick(e) {
   displaySidebar();
 }
 
-// EVENT LISTENERS
-planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
-headerMenuBtn.addEventListener("click", handleHeaderMenuBtnClick);
-
-sidebar.addEventListener("click", function (e) {
+function handleSidebarPlanetClick(e) {
   const sidebarPlanetContainer = e.target.closest(".sidebar__planet-container");
   if (!sidebarPlanetContainer) return;
 
@@ -206,4 +202,9 @@ sidebar.addEventListener("click", function (e) {
 
   // Display 'planetFacts' and 'planetInfo'
   displayFactsAndInfo();
-});
+}
+
+// EVENT LISTENERS
+planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
+headerMenuBtn.addEventListener("click", handleHeaderMenuBtnClick);
+sidebar.addEventListener("click", handleSidebarPlanetClick);
