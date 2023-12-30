@@ -1,3 +1,4 @@
+// HELPERS
 function selectLabel(target, currentPlanetData) {
   // Do nothing if the label is already selected
   if (target.classList.contains("label--selected")) return;
@@ -27,9 +28,15 @@ function hideSidebar(headerMenuIcon, sidebar) {
   sidebar.classList.remove("sidebar--open");
 }
 
-function displaySidebar(headerMenuIcon, hideFactsAndInfo, sidebar) {
+function displaySidebar(
+  headerMenuIcon,
+  hideFactsAndInfo,
+  sidebar,
+  planetFacts,
+  planetInfo
+) {
   headerMenuIcon.classList.add("header__menu-icon--clicked");
-  hideFactsAndInfo();
+  hideFactsAndInfo(planetFacts, planetInfo);
   sidebar.classList.add("sidebar--open");
 }
 
@@ -46,10 +53,22 @@ function selectOverviewLabel(planetFactsLabel, currentPlanetData) {
   overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.borderColor}`;
 }
 
+function displayFactsAndInfo(planetFacts, planetInfo) {
+  planetFacts.classList.remove("hidden");
+  planetInfo.classList.remove("hidden");
+}
+
+function hideFactsAndInfo(planetFacts, planetInfo) {
+  planetFacts.classList.add("hidden");
+  planetInfo.classList.add("hidden");
+}
+
 export {
   selectLabel,
   deselectLabel,
   hideSidebar,
   displaySidebar,
   selectOverviewLabel,
+  displayFactsAndInfo,
+  hideFactsAndInfo,
 };

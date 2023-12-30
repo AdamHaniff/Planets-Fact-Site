@@ -1,13 +1,15 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import planets from "./data";
 import {
   selectLabel,
   deselectLabel,
   hideSidebar,
   displaySidebar,
   selectOverviewLabel,
+  displayFactsAndInfo,
+  hideFactsAndInfo,
 } from "./helpers";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import planets from "./data";
 
 // VARIABLES
 let currentPlanet = "mercury";
@@ -77,16 +79,6 @@ function updateHTML() {
   });
 }
 
-function displayFactsAndInfo() {
-  planetFacts.classList.remove("hidden");
-  planetInfo.classList.remove("hidden");
-}
-
-function hideFactsAndInfo() {
-  planetFacts.classList.add("hidden");
-  planetInfo.classList.add("hidden");
-}
-
 function updateCurrentPlanet(sidebarPlanetName) {
   currentPlanet = sidebarPlanetName;
   currentPlanetData = planets.find(
@@ -122,13 +114,19 @@ function handleHeaderMenuBtnClick(e) {
     hideSidebar(headerMenuIcon, sidebar);
 
     // Display 'planetFacts' and 'planetInfo'
-    displayFactsAndInfo();
+    displayFactsAndInfo(planetFacts, planetInfo);
 
     return;
   }
 
   // Change color of 'headerMenuIcon', hide 'planetFacts' and 'planetInfo', and display 'sidebar'
-  displaySidebar(headerMenuIcon, hideFactsAndInfo, sidebar);
+  displaySidebar(
+    headerMenuIcon,
+    hideFactsAndInfo,
+    sidebar,
+    planetFacts,
+    planetInfo
+  );
 }
 
 function handleSidebarPlanetClick(e) {
@@ -159,7 +157,7 @@ function handleSidebarPlanetClick(e) {
   updateHTML();
 
   // Display 'planetFacts' and 'planetInfo'
-  displayFactsAndInfo();
+  displayFactsAndInfo(planetFacts, planetInfo);
 }
 
 // EVENT LISTENERS
