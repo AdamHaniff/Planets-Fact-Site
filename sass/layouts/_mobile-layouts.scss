@@ -1,52 +1,3 @@
-// ********** STYLE GUIDE **********
-
-// ************ COLORS ************
-$color-white: #fff;
-$color-white10Percent: rgba(255, 255, 255, 0.1);
-$color-white20Percent: rgba(255, 255, 255, 0.2);
-$color-white25Percent: rgba(255, 255, 255, 0.25);
-$color-white50Percent: rgba(255, 255, 255, 0.5);
-$color-white75Percent: rgba(255, 255, 255, 0.75);
-$color-celestialBlue: #419ebb;
-$color-indianYellow: #eda249;
-$color-purpleBlue: #6d2ed5;
-$color-chestnutRed: #d14c32;
-$color-jasper: #d83a34;
-$color-redFox: #cd5120;
-$color-topaz: #1ec1a2;
-$color-ultramarineBlue: #2d68f0;
-$color-iron: #d8d8d8;
-$color-ebony: #070724;
-
-// ********* FONT-FAMILIES *********
-$font-antonio: "Antonio", sans-serif;
-$font-leagueSpartan: "League Spartan", sans-serif;
-
-// ********* FONT-WEIGHTS *********
-$fw-400: 400;
-$fw-700: 700;
-
-// ************* BASE *************
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-html {
-  font-size: 62.5%;
-  box-sizing: border-box;
-}
-
-body {
-  background: #070724;
-  background-image: url("../assets/background-stars.svg");
-  background-size: cover;
-  color: $color-white;
-}
-
 // ********* 375px LAYOUT *********
 
 // ************ HEADER ***********
@@ -240,31 +191,4 @@ body {
     border: none;
     transform: translateX(-0.8rem);
   }
-}
-
-// * CLASSES USED WITH JAVASCRIPT *
-.hidden {
-  display: none;
-}
-
-.header__menu-icon--clicked {
-  fill: $color-white25Percent;
-}
-
-.sidebar--open {
-  opacity: 1;
-  visibility: initial;
-  transform: initial;
-}
-
-.container--selected {
-  border-bottom: 0.4rem solid $color-celestialBlue;
-}
-
-.label--selected {
-  color: $color-white;
-}
-
-.label--not-selected {
-  color: $color-white50Percent;
 }

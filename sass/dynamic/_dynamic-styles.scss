@@ -1,0 +1,29 @@
+// * CLASSES USED WITH JAVASCRIPT *
+.hidden {
+  display: none;
+}
+
+// ************* HEADER *************
+.header__menu-icon--clicked {
+  fill: $color-white25Percent;
+}
+
+// ********** PLANET-FACTS **********
+.container--selected {
+  border-bottom: 0.4rem solid $color-celestialBlue;
+}
+
+.label--selected {
+  color: $color-white;
+}
+
+.label--not-selected {
+  color: $color-white50Percent;
+}
+
+// ************ SIDEBAR *************
+.sidebar--open {
+  opacity: 1;
+  visibility: initial;
+  transform: initial;
+}

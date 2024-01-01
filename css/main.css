@@ -192,12 +192,6 @@ body {
   fill: rgba(255, 255, 255, 0.25);
 }
 
-.sidebar--open {
-  opacity: 1;
-  visibility: initial;
-  transform: initial;
-}
-
 .container--selected {
   border-bottom: 0.4rem solid #419ebb;
 }
@@ -208,4 +202,10 @@ body {
 
 .label--not-selected {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar--open {
+  opacity: 1;
+  visibility: initial;
+  transform: initial;
 }/*# sourceMappingURL=main.css.map */
