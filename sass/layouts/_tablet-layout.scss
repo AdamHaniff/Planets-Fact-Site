@@ -1,0 +1,50 @@
+// ********* 768px LAYOUT *********
+@media only screen and (min-width: 48em) {
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: initial;
+  }
+
+  // ************ HEADER ***********
+  .header {
+    padding: 3.2rem 5.2rem 2.7rem;
+    flex-direction: column;
+    gap: 3.9rem;
+
+    &__logo {
+      margin: 0 auto;
+    }
+
+    &__planets {
+      display: flex;
+      gap: 3.3rem;
+      list-style: none;
+      font-family: $font-leagueSpartan;
+      font-size: 1.4rem;
+      font-weight: $fw-700;
+      line-height: 2.5rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+    }
+  }
+
+  // ********* PLANET-INFO *********
+  .planet-info {
+    padding: 14.6rem 4rem 3.6rem;
+
+    &__img {
+      width: 18.4rem;
+      height: 18.4rem;
+      margin: 0 auto 13rem;
+    }
+
+    &__name {
+      text-align: initial;
+      font-size: 4.8rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+}

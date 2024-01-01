@@ -1,4 +1,7 @@
 // ********* 375px LAYOUT *********
+.tablet {
+  display: none;
+}
 
 // ************ HEADER ***********
 .header {
@@ -190,5 +193,33 @@
     background: none;
     border: none;
     transform: translateX(-0.8rem);
+  }
+}
+
+// ********* 572px LAYOUT *********
+@media only screen and (min-width: 35.75em) {
+  // *********** HEADER ***********
+  .header {
+    padding: 2.4rem 3.2rem;
+  }
+
+  // ******** PLANET-FACTS ********
+  .planet-facts {
+    padding: 2.8rem 3.2rem 0;
+
+    &__label-container {
+      padding-bottom: 2.5rem;
+    }
+  }
+
+  // ********* PLANET-INFO *********
+  .planet-info {
+    padding: 9.5rem 3.2rem 4.7rem;
+  }
+
+  // *********** SIDEBAR ***********
+  .sidebar {
+    top: 8.526rem;
+    padding: 4.4rem 3.2rem 6.7rem;
   }
 }

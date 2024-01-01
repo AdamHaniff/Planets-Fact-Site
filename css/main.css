@@ -18,6 +18,10 @@ body {
   color: #fff;
 }
 
+.tablet {
+  display: none;
+}
+
 .header {
   padding: 1.6rem 2.4rem;
   display: flex;
@@ -184,6 +188,64 @@ body {
   transform: translateX(-0.8rem);
 }
 
+@media only screen and (min-width: 35.75em) {
+  .header {
+    padding: 2.4rem 3.2rem;
+  }
+  .planet-facts {
+    padding: 2.8rem 3.2rem 0;
+  }
+  .planet-facts__label-container {
+    padding-bottom: 2.5rem;
+  }
+  .planet-info {
+    padding: 9.5rem 3.2rem 4.7rem;
+  }
+  .sidebar {
+    top: 8.526rem;
+    padding: 4.4rem 3.2rem 6.7rem;
+  }
+}
+@media only screen and (min-width: 48em) {
+  .mobile {
+    display: none;
+  }
+  .tablet {
+    display: initial;
+  }
+  .header {
+    padding: 3.2rem 5.2rem 2.7rem;
+    flex-direction: column;
+    gap: 3.9rem;
+  }
+  .header__logo {
+    margin: 0 auto;
+  }
+  .header__planets {
+    display: flex;
+    gap: 3.3rem;
+    list-style: none;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+  .planet-info {
+    padding: 14.6rem 4rem 3.6rem;
+  }
+  .planet-info__img {
+    width: 18.4rem;
+    height: 18.4rem;
+    margin: 0 auto 13rem;
+  }
+  .planet-info__name {
+    text-align: initial;
+    font-size: 4.8rem;
+    margin-bottom: 2.4rem;
+  }
+}
 .hidden {
   display: none;
 }
