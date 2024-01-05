@@ -49,6 +49,26 @@
 
     &__details {
       text-align: initial;
+      max-width: 33.9rem;
+    }
+
+    &__container {
+      display: flex;
+      gap: 6.9rem;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      transform: translateY(5.6rem);
+
+      &-container {
+        display: flex;
+        gap: 1.4rem;
+        width: 28.1rem;
+        height: 4rem;
+      }
     }
   }
 
