@@ -21,6 +21,11 @@
   color: $color-white50Percent;
 }
 
+// ********** PLANET-INFO **********
+.content-container--selected {
+  background: $color-celestialBlue;
+}
+
 // ************ SIDEBAR *************
 .sidebar--open {
   opacity: 1;

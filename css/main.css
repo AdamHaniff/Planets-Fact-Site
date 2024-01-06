@@ -261,9 +261,22 @@ body {
   }
   .planet-info__content-container {
     display: flex;
+    align-items: center;
     gap: 1.4rem;
     width: 28.1rem;
     height: 4rem;
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    letter-spacing: 0.1929rem;
+    text-transform: uppercase;
+    border: 0.1rem solid rgba(255, 255, 255, 0.2);
+  }
+  .planet-info__content-number {
+    display: inline-block;
+    margin-left: 2rem;
+    color: rgba(255, 255, 255, 0.5);
   }
   .source {
     justify-content: start;
@@ -288,6 +301,10 @@ body {
 
 .label--not-selected {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.content-container--selected {
+  background: #419ebb;
 }
 
 .sidebar--open {

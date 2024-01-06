@@ -65,9 +65,23 @@
 
       &-container {
         display: flex;
+        align-items: center;
         gap: 1.4rem;
         width: 28.1rem;
         height: 4rem;
+        font-family: $font-leagueSpartan;
+        font-size: 1.2rem;
+        font-weight: $fw-700;
+        line-height: 2.5rem;
+        letter-spacing: 0.1929rem;
+        text-transform: uppercase;
+        border: 0.1rem solid $color-white20Percent;
+      }
+
+      &-number {
+        display: inline-block;
+        margin-left: 2rem;
+        color: $color-white50Percent;
       }
     }
   }
