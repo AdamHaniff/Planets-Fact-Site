@@ -58,6 +58,10 @@
     margin: 0 auto 9.8rem;
   }
 
+  &__container {
+    margin-bottom: 2.8rem;
+  }
+
   &__name {
     display: block;
     text-align: center;
@@ -116,7 +120,6 @@
   font-family: $font-leagueSpartan;
   font-size: 1.5rem;
   line-height: 2.5rem;
-  margin-bottom: 2.8rem;
 
   &__link-window {
     display: flex;

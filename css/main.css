@@ -70,6 +70,9 @@ body {
   height: 11.1rem;
   margin: 0 auto 9.8rem;
 }
+.planet-info__container {
+  margin-bottom: 2.8rem;
+}
 .planet-info__name {
   display: block;
   text-align: center;
@@ -121,7 +124,6 @@ body {
   font-family: "League Spartan", sans-serif;
   font-size: 1.5rem;
   line-height: 2.5rem;
-  margin-bottom: 2.8rem;
 }
 .source__link-window {
   display: flex;
