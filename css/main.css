@@ -254,6 +254,7 @@ body {
   .planet-info__container {
     display: flex;
     gap: 6.9rem;
+    margin-bottom: 2.7rem;
   }
   .planet-info__content {
     display: flex;
@@ -280,9 +281,12 @@ body {
     margin-left: 2rem;
     color: rgba(255, 255, 255, 0.5);
   }
+  .planet-info__data {
+    flex-direction: row;
+    gap: 1.1rem;
+  }
   .source {
     justify-content: start;
-    margin-bottom: 2.7rem;
   }
 }
 .hidden {
