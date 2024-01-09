@@ -249,7 +249,7 @@ body {
   }
   .planet-info__details {
     text-align: initial;
-    max-width: 33.9rem;
+    width: 33.9rem;
   }
   .planet-info__container {
     display: flex;
@@ -284,6 +284,22 @@ body {
   .planet-info__data {
     flex-direction: row;
     gap: 1.1rem;
+  }
+  .planet-info__data-container {
+    gap: 0.6rem;
+    flex-direction: column;
+    justify-content: initial;
+    align-items: initial;
+    padding: 1.6rem 0 0 1.5rem;
+    width: 16.4rem;
+    height: 8.8rem;
+  }
+  .planet-info__data-name {
+    transform: initial;
+  }
+  .planet-info__data-value {
+    font-size: 2.4rem;
+    letter-spacing: -0.09rem;
   }
   .source {
     justify-content: start;

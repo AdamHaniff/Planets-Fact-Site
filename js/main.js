@@ -164,3 +164,14 @@ function handleSidebarPlanetClick(e) {
 planetFacts.addEventListener("click", handlePlanetFactsLabelClick);
 headerMenuBtn.addEventListener("click", handleHeaderMenuBtnClick);
 sidebar.addEventListener("click", handleSidebarPlanetClick);
+
+// CODE FOR TABLET SITE
+
+// VARIABLES
+const headerPlanets = document.querySelector(".header__planets");
+
+// EVENT LISTENERS
+headerPlanets.addEventListener("click", function (e) {
+  const target = e.target;
+  if (!target.classList.contains("header__planet")) return;
+});

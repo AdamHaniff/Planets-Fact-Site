@@ -49,7 +49,7 @@
 
     &__details {
       text-align: initial;
-      max-width: 33.9rem;
+      width: 33.9rem;
     }
 
     &__container {
@@ -89,6 +89,25 @@
     &__data {
       flex-direction: row;
       gap: 1.1rem;
+
+      &-container {
+        gap: 0.6rem;
+        flex-direction: column;
+        justify-content: initial;
+        align-items: initial;
+        padding: 1.6rem 0 0 1.5rem;
+        width: 16.4rem;
+        height: 8.8rem;
+      }
+
+      &-name {
+        transform: initial;
+      }
+
+      &-value {
+        font-size: 2.4rem;
+        letter-spacing: -0.09rem;
+      }
     }
   }
 
