@@ -79,8 +79,8 @@ function updateHTML() {
   });
 }
 
-function updateCurrentPlanet(sidebarPlanetName) {
-  currentPlanet = sidebarPlanetName;
+function updateCurrentPlanet(planetName) {
+  currentPlanet = planetName;
   currentPlanetData = planets.find(
     (planet) => planet.name.toLowerCase() === currentPlanet
   );
@@ -174,4 +174,11 @@ const headerPlanets = document.querySelector(".header__planets");
 headerPlanets.addEventListener("click", function (e) {
   const target = e.target;
   if (!target.classList.contains("header__planet")) return;
+
+  const headerPlanetName = target.textContent.toLowerCase();
+  // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
+  updateCurrentPlanet(headerPlanetName);
+
+  // Update HTML in 'planetInfo'
+  updateHTML();
 });
