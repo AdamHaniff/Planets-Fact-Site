@@ -14,7 +14,7 @@ import planets from "./data";
 // VARIABLES
 let currentPlanet = "mercury";
 let currentPlanetData = planets[0];
-let currentLabelTextContent = "overview";
+let currentLabelIndex = 0;
 const headerMenuBtn = document.querySelector(".header__menu-btn");
 const headerMenuIcon = document.querySelector(".header__menu-icon");
 const planetFacts = document.querySelector(".planet-facts");
@@ -29,34 +29,35 @@ const planetDataValue = document.querySelectorAll(".planet-info__data-value");
 const sidebar = document.querySelector(".sidebar");
 
 // FUNCTIONS
-function updatePlanetInfo(target) {
-  const targetTextContent = target.textContent.toLowerCase();
+function updatePlanetInfo(target, labelContainer) {
+  for (let index = 0; index < labelContainer.length; index++) {
+    const label = labelContainer[index];
+    // If the same label is clicked again, then do nothing
+    if (target === labelContainer[currentLabelIndex]) break;
 
-  if (targetTextContent === currentLabelTextContent) {
-    return;
-  } else {
-    currentLabelTextContent = targetTextContent;
-  }
+    // If a new label is clicked, then update 'currentLabelIndex'
+    if (target === label) currentLabelIndex = index;
 
-  if (targetTextContent === "overview") {
-    planetImage.src = currentPlanetData.images.planet;
-    planetDetails.innerHTML = currentPlanetData.overview.content;
-    sourceLink.href = currentPlanetData.overview.source;
-    sourceWindow.href = currentPlanetData.overview.source;
-  }
+    if (currentLabelIndex === 0) {
+      planetImage.src = currentPlanetData.images.planet;
+      planetDetails.innerHTML = currentPlanetData.overview.content;
+      sourceLink.href = currentPlanetData.overview.source;
+      sourceWindow.href = currentPlanetData.overview.source;
+    }
 
-  if (targetTextContent === "structure") {
-    planetImage.src = currentPlanetData.images.internal;
-    planetDetails.innerHTML = currentPlanetData.structure.content;
-    sourceLink.href = currentPlanetData.structure.source;
-    sourceWindow.href = currentPlanetData.structure.source;
-  }
+    if (currentLabelIndex === 1) {
+      planetImage.src = currentPlanetData.images.internal;
+      planetDetails.innerHTML = currentPlanetData.structure.content;
+      sourceLink.href = currentPlanetData.structure.source;
+      sourceWindow.href = currentPlanetData.structure.source;
+    }
 
-  if (targetTextContent === "surface") {
-    planetImage.src = currentPlanetData.images.geology;
-    planetDetails.innerHTML = currentPlanetData.geology.content;
-    sourceLink.href = currentPlanetData.geology.source;
-    sourceWindow.href = currentPlanetData.geology.source;
+    if (currentLabelIndex === 2) {
+      planetImage.src = currentPlanetData.images.geology;
+      planetDetails.innerHTML = currentPlanetData.geology.content;
+      sourceLink.href = currentPlanetData.geology.source;
+      sourceWindow.href = currentPlanetData.geology.source;
+    }
   }
 }
 
@@ -84,7 +85,7 @@ function updateCurrentPlanet(planetName) {
   currentPlanetData = planets.find(
     (planet) => planet.name.toLowerCase() === currentPlanet
   );
-  currentLabelTextContent = "overview";
+  currentLabelIndex = 0;
 }
 
 // EVENT LISTENER CALLBACK FUNCTIONS
@@ -100,7 +101,7 @@ function handlePlanetFactsLabelClick(e) {
     }
   }
 
-  updatePlanetInfo(target);
+  updatePlanetInfo(target, planetFactsLabel);
 }
 
 function handleHeaderMenuBtnClick(e) {
@@ -169,6 +170,10 @@ sidebar.addEventListener("click", handleSidebarPlanetClick);
 
 // VARIABLES
 const headerPlanets = document.querySelector(".header__planets");
+const planetInfoContent = document.querySelector(".planet-info__content");
+const contentContainer = document.querySelectorAll(
+  ".planet-info__content-container"
+);
 
 // EVENT LISTENERS
 headerPlanets.addEventListener("click", function (e) {
@@ -181,4 +186,20 @@ headerPlanets.addEventListener("click", function (e) {
 
   // Update HTML in 'planetInfo'
   updateHTML();
+});
+
+planetInfoContent.addEventListener("click", function (e) {
+  const target = e.target.closest(".planet-info__content-container");
+  if (!target.classList.contains("planet-info__content-container")) return;
+
+  updatePlanetInfo(target, contentContainer);
+
+  // UP TO WRITING THE LOGIC FOR THIS
+  for (let container of contentContainer) {
+    if (container === target) {
+      selectLabel(target, currentPlanetData);
+    } else {
+      deselectLabel(label);
+    }
+  }
 });
