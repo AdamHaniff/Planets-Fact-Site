@@ -190,16 +190,22 @@ headerPlanets.addEventListener("click", function (e) {
 
 planetInfoContent.addEventListener("click", function (e) {
   const target = e.target.closest(".planet-info__content-container");
-  if (!target.classList.contains("planet-info__content-container")) return;
+  if (!target || !target.classList.contains("planet-info__content-container"))
+    return;
 
   updatePlanetInfo(target, contentContainer);
 
-  // UP TO WRITING THE LOGIC FOR THIS
   for (let container of contentContainer) {
     if (container === target) {
-      selectLabel(target, currentPlanetData);
+      // If the target container already has the "content-container--selected" class, then do nothing
+      if (target.classList.contains("content-container--selected")) return;
+
+      // Change the background color of the target container
+      target.style.background = currentPlanetData.borderColor;
     } else {
-      deselectLabel(label);
+      // Remove the "content-container--selected" class from the container if it has it and reset the container's background color to its initial state
+      container.classList.remove("content-container--selected");
+      container.style.background = "initial";
     }
   }
 });
