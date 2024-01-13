@@ -9,7 +9,7 @@ function selectLabel(target, currentPlanetData) {
 
   // Add border-bottom to label container
   const labelContainer = target.closest(".planet-facts__label-container");
-  labelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.borderColor}`;
+  labelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
 }
 
 function deselectLabel(label) {
@@ -50,7 +50,7 @@ function selectOverviewLabel(planetFactsLabel, currentPlanetData) {
   const overviewLabelContainer = document.querySelector(
     ".planet-facts__label-container"
   );
-  overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.borderColor}`;
+  overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
 }
 
 function displayFactsAndInfo(planetFacts, planetInfo) {
