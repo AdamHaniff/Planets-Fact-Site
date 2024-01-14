@@ -175,20 +175,8 @@ const contentContainer = document.querySelectorAll(
   ".planet-info__content-container"
 );
 
-// EVENT LISTENERS
-headerPlanets.addEventListener("click", function (e) {
-  const target = e.target;
-  if (!target.classList.contains("header__planet")) return;
-
-  const headerPlanetName = target.textContent.toLowerCase();
-  // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
-  updateCurrentPlanet(headerPlanetName);
-
-  // Update HTML in 'planetInfo'
-  updateHTML();
-});
-
-planetInfoContent.addEventListener("click", function (e) {
+// EVENT LISTENER CALLBACK FUNCTIONS
+function handlePlanetInfoContentClick(e) {
   const target = e.target.closest(".planet-info__content-container");
   if (!target || !target.classList.contains("planet-info__content-container"))
     return;
@@ -208,4 +196,19 @@ planetInfoContent.addEventListener("click", function (e) {
       container.style.background = "initial";
     }
   }
+}
+
+// EVENT LISTENERS
+headerPlanets.addEventListener("click", function (e) {
+  const target = e.target;
+  if (!target.classList.contains("header__planet")) return;
+
+  const headerPlanetName = target.textContent.toLowerCase();
+  // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
+  updateCurrentPlanet(headerPlanetName);
+
+  // Update HTML in 'planetInfo'
+  updateHTML();
 });
+
+planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
