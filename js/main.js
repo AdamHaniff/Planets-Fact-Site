@@ -198,8 +198,7 @@ function handlePlanetInfoContentClick(e) {
   }
 }
 
-// EVENT LISTENERS
-headerPlanets.addEventListener("click", function (e) {
+function handleHeaderPlanetsClick(e) {
   const target = e.target;
   if (!target.classList.contains("header__planet")) return;
 
@@ -209,6 +208,8 @@ headerPlanets.addEventListener("click", function (e) {
 
   // Update HTML in 'planetInfo'
   updateHTML();
-});
+}
 
+// EVENT LISTENERS
+headerPlanets.addEventListener("click", handleHeaderPlanetsClick);
 planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
