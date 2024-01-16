@@ -63,6 +63,28 @@ function hideFactsAndInfo(planetFacts, planetInfo) {
   planetInfo.classList.add("hidden");
 }
 
+function selectContainer(target, contentContainer, currentPlanetData) {
+  for (let container of contentContainer) {
+    if (container === target) {
+      // If the target container already has the "content-container--selected" class, then do nothing
+      if (target.classList.contains("content-container--selected")) return;
+
+      // Change the background color of the target container
+      target.style.background = currentPlanetData.color;
+    } else {
+      // Remove the "content-container--selected" class from the container if it has it and reset the container's background color to its initial state
+      container.classList.remove("content-container--selected");
+      container.style.background = "initial";
+    }
+  }
+}
+
+function selectOverviewContainer(contentContainer, currentPlanetData) {
+  const overviewContainer = contentContainer[0];
+  overviewContainer.classList.remove("content-container--selected");
+  overviewContainer.style.background = currentPlanetData.color;
+}
+
 export {
   selectLabel,
   deselectLabel,
@@ -71,4 +93,6 @@ export {
   selectOverviewLabel,
   displayFactsAndInfo,
   hideFactsAndInfo,
+  selectContainer,
+  selectOverviewContainer,
 };

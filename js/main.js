@@ -6,6 +6,8 @@ import {
   selectOverviewLabel,
   displayFactsAndInfo,
   hideFactsAndInfo,
+  selectContainer,
+  selectOverviewContainer,
 } from "./helpers";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -175,34 +177,7 @@ const contentContainer = document.querySelectorAll(
   ".planet-info__content-container"
 );
 
-// FUNCTIONS
-function selectContainer() {
-  for (let container of contentContainer) {
-    if (container === target) {
-      // If the target container already has the "content-container--selected" class, then do nothing
-      if (target.classList.contains("content-container--selected")) return;
-
-      // Change the background color of the target container
-      target.style.background = currentPlanetData.color;
-    } else {
-      // Remove the "content-container--selected" class from the container if it has it and reset the container's background color to its initial state
-      container.classList.remove("content-container--selected");
-      container.style.background = "initial";
-    }
-  }
-}
-
 // EVENT LISTENER CALLBACK FUNCTIONS
-function handlePlanetInfoContentClick(e) {
-  const target = e.target.closest(".planet-info__content-container");
-  if (!target || !target.classList.contains("planet-info__content-container"))
-    return;
-
-  updatePlanetInfo(target, contentContainer);
-
-  selectContainer();
-}
-
 function handleHeaderPlanetsClick(e) {
   const target = e.target;
   if (!target.classList.contains("header__planet")) return;
@@ -211,8 +186,27 @@ function handleHeaderPlanetsClick(e) {
   // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
   updateCurrentPlanet(headerPlanetName);
 
+  // Remove the background color from the container that is currently selected
+  for (let container of contentContainer) {
+    container.style.background = "initial";
+  }
+
+  // Select the overview container and change its background color to the new planet's color
+  selectOverviewContainer(contentContainer, currentPlanetData);
+
   // Update HTML in 'planetInfo'
   updateHTML();
+}
+
+function handlePlanetInfoContentClick(e) {
+  const target = e.target.closest(".planet-info__content-container");
+  if (!target || !target.classList.contains("planet-info__content-container"))
+    return;
+
+  updatePlanetInfo(target, contentContainer);
+
+  // Change the background of the selected container and remove the background of the previously selected container
+  selectContainer(target, contentContainer, currentPlanetData);
 }
 
 // EVENT LISTENERS
