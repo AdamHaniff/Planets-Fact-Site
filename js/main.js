@@ -175,14 +175,8 @@ const contentContainer = document.querySelectorAll(
   ".planet-info__content-container"
 );
 
-// EVENT LISTENER CALLBACK FUNCTIONS
-function handlePlanetInfoContentClick(e) {
-  const target = e.target.closest(".planet-info__content-container");
-  if (!target || !target.classList.contains("planet-info__content-container"))
-    return;
-
-  updatePlanetInfo(target, contentContainer);
-
+// FUNCTIONS
+function selectContainer() {
   for (let container of contentContainer) {
     if (container === target) {
       // If the target container already has the "content-container--selected" class, then do nothing
@@ -196,6 +190,17 @@ function handlePlanetInfoContentClick(e) {
       container.style.background = "initial";
     }
   }
+}
+
+// EVENT LISTENER CALLBACK FUNCTIONS
+function handlePlanetInfoContentClick(e) {
+  const target = e.target.closest(".planet-info__content-container");
+  if (!target || !target.classList.contains("planet-info__content-container"))
+    return;
+
+  updatePlanetInfo(target, contentContainer);
+
+  selectContainer();
 }
 
 function handleHeaderPlanetsClick(e) {
