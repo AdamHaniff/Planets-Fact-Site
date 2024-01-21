@@ -236,6 +236,9 @@ body {
   }
   .planet-info {
     padding: 14.6rem 4rem 3.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .planet-info__img {
     width: 18.4rem;
@@ -252,10 +255,9 @@ body {
     width: 33.9rem;
   }
   .planet-info__container {
-    width: 68.849rem;
     display: flex;
     gap: 6.9rem;
-    margin: 0 auto 2.7rem;
+    margin-bottom: 2.7rem;
   }
   .planet-info__content {
     display: flex;
@@ -283,8 +285,6 @@ body {
     color: rgba(255, 255, 255, 0.5);
   }
   .planet-info__data {
-    width: 68.849rem;
-    margin: 0 auto;
     flex-direction: row;
     gap: 1.1rem;
   }

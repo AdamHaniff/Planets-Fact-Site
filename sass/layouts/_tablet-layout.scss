@@ -34,6 +34,9 @@
   // ********* PLANET-INFO *********
   .planet-info {
     padding: 14.6rem 4rem 3.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__img {
       width: 18.4rem;
@@ -53,10 +56,9 @@
     }
 
     &__container {
-      width: 68.849rem;
       display: flex;
       gap: 6.9rem;
-      margin: 0 auto 2.7rem;
+      margin-bottom: 2.7rem;
     }
 
     &__content {
@@ -88,8 +90,6 @@
     }
 
     &__data {
-      width: 68.849rem;
-      margin: 0 auto;
       flex-direction: row;
       gap: 1.1rem;
 
