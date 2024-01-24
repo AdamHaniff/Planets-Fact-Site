@@ -2,5 +2,8 @@
 @media only screen and (min-width: 69em) {
   // ************** HEADER **************
   .header {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: initial;
   }
 }

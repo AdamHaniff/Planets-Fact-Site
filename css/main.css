@@ -308,6 +308,13 @@ body {
     justify-content: start;
   }
 }
+@media only screen and (min-width: 69em) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: initial;
+  }
+}
 .hidden {
   display: none;
 }
