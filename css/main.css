@@ -318,6 +318,9 @@ body {
   .header__logo {
     margin: 2.2rem 0 3.2rem 3.2rem;
   }
+  .header__planets {
+    gap: initial;
+  }
 }
 .hidden {
   display: none;
