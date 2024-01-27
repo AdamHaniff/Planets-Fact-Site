@@ -319,7 +319,7 @@ body {
     margin: 2.2rem 0 3.2rem 3.2rem;
   }
   .header__planets {
-    gap: initial;
+    padding: 2.9rem 4.1rem 2.7rem 0;
   }
 }
 .hidden {
