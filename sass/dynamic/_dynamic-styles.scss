@@ -26,6 +26,10 @@
   background: $color-celestialBlue;
 }
 
+.content-container--hovered {
+  background: $color-iron20Percent !important;
+}
+
 // ************ SIDEBAR *************
 .sidebar--open {
   opacity: 1;

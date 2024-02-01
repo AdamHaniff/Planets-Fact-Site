@@ -328,6 +328,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15rem;
+    margin-bottom: 8.7rem;
   }
   .planet-info__img {
     width: 24.5rem;
@@ -335,16 +336,16 @@ body {
     margin-bottom: initial;
   }
   .planet-info__container {
+    width: 35rem;
     flex-direction: column;
     gap: 3.9rem;
-    margin-bottom: 8.7rem;
+    margin-bottom: initial;
   }
   .planet-info__name {
     font-size: 6.4rem;
     margin-bottom: 2.3rem;
   }
   .planet-info__details {
-    width: 35rem;
     font-size: 1.55rem;
     line-height: 2.5rem;
     margin-bottom: 2.4rem;
@@ -355,12 +356,36 @@ body {
   .planet-info__content-container {
     font-size: 1.35rem;
     gap: 2.5rem;
-    width: 35rem;
+    width: 100%;
     height: 4.8rem;
     letter-spacing: 0.2571rem;
   }
+  .planet-info__data {
+    gap: 3rem;
+  }
+  .planet-info__data-container {
+    gap: 0.4rem;
+    padding: 1.8rem 0 0 1.9rem;
+    width: 163.75;
+    height: 10.8rem;
+  }
+  .planet-info__data-name {
+    font-size: 1.25rem;
+    line-height: 2.05rem;
+    letter-spacing: 0.085rem;
+  }
+  .planet-info__data-value {
+    font-size: 3.2rem;
+    letter-spacing: -0.12rem;
+  }
   .source {
     font-size: 1.55rem;
+  }
+}
+@media only screen and (min-width: 62em) {
+  .header__planet,
+  .planet-info__content-container {
+    cursor: pointer;
   }
 }
 .hidden {
@@ -385,6 +410,10 @@ body {
 
 .content-container--selected {
   background: #419ebb;
+}
+
+.content-container--hovered {
+  background: rgba(216, 216, 216, 0.2) !important;
 }
 
 .sidebar--open {

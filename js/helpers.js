@@ -70,6 +70,7 @@ function selectContainer(target, contentContainer, currentPlanetData) {
       if (target.classList.contains("content-container--selected")) return;
 
       // Change the background color of the target container
+      target.classList.remove("content-container--hovered");
       target.style.background = currentPlanetData.color;
     } else {
       // Remove the "content-container--selected" class from the container if it has it and reset the container's background color to its initial state
