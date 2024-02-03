@@ -19,6 +19,7 @@ let currentPlanetData = planets[0];
 let currentLabelIndex = 0;
 const headerMenuBtn = document.querySelector(".header__menu-btn");
 const headerMenuIcon = document.querySelector(".header__menu-icon");
+const headerPlanets = document.querySelector(".header__planets");
 const planetFacts = document.querySelector(".planet-facts");
 const planetInfo = document.querySelector(".planet-info");
 const planetFactsLabel = document.querySelectorAll(".planet-facts__label");
@@ -171,7 +172,6 @@ sidebar.addEventListener("click", handleSidebarPlanetClick);
 // CODE FOR TABLET SITE
 
 // VARIABLES
-const headerPlanets = document.querySelector(".header__planets");
 const planetInfoContent = document.querySelector(".planet-info__content");
 const contentContainer = document.querySelectorAll(
   ".planet-info__content-container"
@@ -214,16 +214,32 @@ headerPlanets.addEventListener("click", handleHeaderPlanetsClick);
 planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
 
 // CODE FOR DESKTOP SITE
-planetInfoContent.addEventListener("mouseover", function (e) {
+
+// FUNCTION
+function addOrRemoveContainerHoverClass(e, eventName) {
   const target = e.target.closest(".planet-info__content-container");
   if (!target) return;
 
-  target.classList.add("content-container--hovered");
+  if (eventName === "mouseover") {
+    target.classList.add("content-container--hovered");
+  }
+
+  if (eventName === "mouseout") {
+    target.classList.remove("content-container--hovered");
+  }
+}
+
+// EVENT LISTENERS
+headerPlanets.addEventListener("mouseover", function (e) {
+  if (!e.target.classList.contains("header__planet")) return;
+
+  const headerPlanetName = e.target.textContent.toLowerCase();
 });
 
-planetInfoContent.addEventListener("mouseout", function (e) {
-  const target = e.target.closest(".planet-info__content-container");
-  if (!target) return;
+planetInfoContent.addEventListener("mouseover", (e) =>
+  addOrRemoveContainerHoverClass(e, "mouseover")
+);
 
-  target.classList.remove("content-container--hovered");
-});
+planetInfoContent.addEventListener("mouseout", (e) =>
+  addOrRemoveContainerHoverClass(e, "mouseout")
+);

@@ -12,7 +12,12 @@
     }
 
     &__planets {
-      padding: 2.9rem 4.1rem 2.7rem 0;
+      padding: 0 4.1rem 2.7rem 0;
+    }
+
+    &__planet {
+      padding-top: 2.9rem;
+      border-top: 0.4rem solid transparent;
     }
   }
 

@@ -319,7 +319,11 @@ body {
     margin: 2.2rem 0 2.7rem 3.2rem;
   }
   .header__planets {
-    padding: 2.9rem 4.1rem 2.7rem 0;
+    padding: 0 4.1rem 2.7rem 0;
+  }
+  .header__planet {
+    padding-top: 2.9rem;
+    border-top: 0.4rem solid transparent;
   }
   .planet-info {
     padding: 11.05rem 9.45rem 5.15rem;
