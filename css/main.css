@@ -353,6 +353,9 @@ body {
   .planet-info__content {
     transform: initial;
   }
+  .planet-info__content-number, .planet-info__content-label {
+    pointer-events: none;
+  }
   .planet-info__content-container {
     font-size: 1.35rem;
     gap: 2.5rem;
@@ -383,8 +386,8 @@ body {
   }
 }
 @media only screen and (min-width: 62em) {
-  .header__planet,
-  .planet-info__content-container {
+  .header__planet:hover,
+  .planet-info__content-container:hover {
     cursor: pointer;
   }
 }

@@ -215,11 +215,10 @@ planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
 
 // CODE FOR DESKTOP SITE
 planetInfoContent.addEventListener("mouseover", function (e) {
-  if (!e.target.classList.contains("planet-info__content-container")) return;
+  const target = e.target.closest(".planet-info__content-container");
+  if (!target) return;
 
-  console.log(e.target);
-
-  e.target.classList.add("content-container--hovered");
+  target.classList.add("content-container--hovered");
 });
 
 planetInfoContent.addEventListener("mouseout", function (e) {

@@ -54,6 +54,11 @@
     &__content {
       transform: initial;
 
+      &-number,
+      &-label {
+        pointer-events: none;
+      }
+
       &-container {
         font-size: 1.35rem;
         gap: 2.5rem;

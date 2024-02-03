@@ -2,8 +2,8 @@
 
 // ********** 992px MEDIA QUERY **********
 @media only screen and (min-width: 62em) {
-  .header__planet,
-  .planet-info__content-container {
+  .header__planet:hover,
+  .planet-info__content-container:hover {
     cursor: pointer;
   }
 }
