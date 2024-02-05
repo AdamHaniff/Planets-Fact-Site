@@ -234,6 +234,11 @@ headerPlanets.addEventListener("mouseover", function (e) {
   if (!e.target.classList.contains("header__planet")) return;
 
   const headerPlanetName = e.target.textContent.toLowerCase();
+  const headerPlanetData = planets.find(
+    (planet) => planet.name.toLowerCase() === headerPlanetName
+  );
+
+  e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
 });
 
 planetInfoContent.addEventListener("mouseover", (e) =>
