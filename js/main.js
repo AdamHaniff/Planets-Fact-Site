@@ -241,6 +241,12 @@ headerPlanets.addEventListener("mouseover", function (e) {
   e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
 });
 
+headerPlanets.addEventListener("mouseout", function (e) {
+  if (!e.target.classList.contains("header__planet")) return;
+
+  e.target.style.borderTop = "0.4rem solid transparent";
+});
+
 planetInfoContent.addEventListener("mouseover", (e) =>
   addOrRemoveContainerHoverClass(e, "mouseover")
 );
