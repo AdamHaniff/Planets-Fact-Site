@@ -229,8 +229,7 @@ function addOrRemoveContainerHoverClass(e, eventName) {
   }
 }
 
-// EVENT LISTENERS
-headerPlanets.addEventListener("mouseover", function (e) {
+function handleHeaderPlanetsMouseover(e) {
   if (!e.target.classList.contains("header__planet")) return;
 
   const headerPlanetName = e.target.textContent.toLowerCase();
@@ -239,7 +238,10 @@ headerPlanets.addEventListener("mouseover", function (e) {
   );
 
   e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
-});
+}
+
+// EVENT LISTENERS
+headerPlanets.addEventListener("mouseover", handleHeaderPlanetsMouseover);
 
 headerPlanets.addEventListener("mouseout", function (e) {
   if (!e.target.classList.contains("header__planet")) return;
