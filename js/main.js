@@ -240,14 +240,16 @@ function handleHeaderPlanetsMouseover(e) {
   e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
 }
 
-// EVENT LISTENERS
-headerPlanets.addEventListener("mouseover", handleHeaderPlanetsMouseover);
-
-headerPlanets.addEventListener("mouseout", function (e) {
+function handleHeaderPlanetsMouseout(e) {
   if (!e.target.classList.contains("header__planet")) return;
 
   e.target.style.borderTop = "0.4rem solid transparent";
-});
+}
+
+// EVENT LISTENERS
+headerPlanets.addEventListener("mouseover", handleHeaderPlanetsMouseover);
+
+headerPlanets.addEventListener("mouseout", handleHeaderPlanetsMouseout);
 
 planetInfoContent.addEventListener("mouseover", (e) =>
   addOrRemoveContainerHoverClass(e, "mouseover")
