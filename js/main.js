@@ -215,7 +215,7 @@ planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
 
 // CODE FOR DESKTOP SITE
 
-// FUNCTION
+// EVENT LISTENER CALLBACK FUNCTIONS
 function addOrRemoveContainerHoverClass(e, eventName) {
   const target = e.target.closest(".planet-info__content-container");
   if (!target) return;
@@ -237,12 +237,14 @@ function handleHeaderPlanetsMouseover(e) {
     (planet) => planet.name.toLowerCase() === headerPlanetName
   );
 
+  // Change border-top color to the planet's color
   e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
 }
 
 function handleHeaderPlanetsMouseout(e) {
   if (!e.target.classList.contains("header__planet")) return;
 
+  // Reset border-top color to transparent
   e.target.style.borderTop = "0.4rem solid transparent";
 }
 
