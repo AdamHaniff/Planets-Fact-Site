@@ -8,6 +8,9 @@ import {
   hideFactsAndInfo,
   selectContainer,
   selectOverviewContainer,
+  addOrRemoveContainerHoverClass,
+  handleHeaderPlanetsMouseover,
+  handleHeaderPlanetsMouseout,
 } from "./helpers";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -209,47 +212,14 @@ function handlePlanetInfoContentClick(e) {
   selectContainer(target, contentContainer, currentPlanetData);
 }
 
-// EVENT LISTENERS
+// TABLET SITE EVENT LISTENERS
 headerPlanets.addEventListener("click", handleHeaderPlanetsClick);
 planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
 
-// CODE FOR DESKTOP SITE
-
-// EVENT LISTENER CALLBACK FUNCTIONS
-function addOrRemoveContainerHoverClass(e, eventName) {
-  const target = e.target.closest(".planet-info__content-container");
-  if (!target) return;
-
-  if (eventName === "mouseover") {
-    target.classList.add("content-container--hovered");
-  }
-
-  if (eventName === "mouseout") {
-    target.classList.remove("content-container--hovered");
-  }
-}
-
-function handleHeaderPlanetsMouseover(e) {
-  if (!e.target.classList.contains("header__planet")) return;
-
-  const headerPlanetName = e.target.textContent.toLowerCase();
-  const headerPlanetData = planets.find(
-    (planet) => planet.name.toLowerCase() === headerPlanetName
-  );
-
-  // Change border-top color to the planet's color
-  e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
-}
-
-function handleHeaderPlanetsMouseout(e) {
-  if (!e.target.classList.contains("header__planet")) return;
-
-  // Reset border-top color to transparent
-  e.target.style.borderTop = "0.4rem solid transparent";
-}
-
-// EVENT LISTENERS
-headerPlanets.addEventListener("mouseover", handleHeaderPlanetsMouseover);
+// DESKTOP SITE EVENT LISTENERS
+headerPlanets.addEventListener("mouseover", (e) =>
+  handleHeaderPlanetsMouseover(e, planets)
+);
 
 headerPlanets.addEventListener("mouseout", handleHeaderPlanetsMouseout);
 

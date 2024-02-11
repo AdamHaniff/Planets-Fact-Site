@@ -86,6 +86,39 @@ function selectOverviewContainer(contentContainer, currentPlanetData) {
   overviewContainer.style.background = currentPlanetData.color;
 }
 
+function addOrRemoveContainerHoverClass(e, eventName) {
+  const target = e.target.closest(".planet-info__content-container");
+  if (!target) return;
+
+  if (eventName === "mouseover") {
+    // Change background color of content container to iron
+    target.classList.add("content-container--hovered");
+  }
+
+  if (eventName === "mouseout") {
+    target.classList.remove("content-container--hovered");
+  }
+}
+
+function handleHeaderPlanetsMouseover(e, planets) {
+  if (!e.target.classList.contains("header__planet")) return;
+
+  const headerPlanetName = e.target.textContent.toLowerCase();
+  const headerPlanetData = planets.find(
+    (planet) => planet.name.toLowerCase() === headerPlanetName
+  );
+
+  // Change the border-top color of the 'header__planet' to that planet's color
+  e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
+}
+
+function handleHeaderPlanetsMouseout(e) {
+  if (!e.target.classList.contains("header__planet")) return;
+
+  // Change the border-top color of the 'header__planet' back to transparent
+  e.target.style.borderTop = "0.4rem solid transparent";
+}
+
 export {
   selectLabel,
   deselectLabel,
@@ -96,4 +129,7 @@ export {
   hideFactsAndInfo,
   selectContainer,
   selectOverviewContainer,
+  addOrRemoveContainerHoverClass,
+  handleHeaderPlanetsMouseover,
+  handleHeaderPlanetsMouseout,
 };
