@@ -104,6 +104,11 @@
 
 // ************** 1440px LAYOUT ***************
 @media only screen and (min-width: 90em) {
+  body {
+    max-width: 142.364rem;
+    margin: 0 auto;
+  }
+
   // ************** PLANET-INFO **************
   .planet-info {
     padding: 12.6rem 16.5rem 5.6rem;
