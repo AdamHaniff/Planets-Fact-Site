@@ -157,7 +157,7 @@ function handleSidebarPlanetClick(e) {
     }
   }
 
-  // Select the overview label and change the border-bottom color of the label's container to the planet's border color
+  // Select the overview label and change the border-bottom color of the label's container to the planet's color
   selectOverviewLabel(planetFactsLabel, currentPlanetData);
 
   // Update HTML in 'planetInfo'

@@ -103,6 +103,7 @@ function addOrRemoveContainerHoverClass(e, eventName) {
 function handleHeaderPlanetsMouseover(e, planets) {
   if (!e.target.classList.contains("header__planet")) return;
 
+  // Find the data for the 'header__planet' that was hovered
   const headerPlanetName = e.target.textContent.toLowerCase();
   const headerPlanetData = planets.find(
     (planet) => planet.name.toLowerCase() === headerPlanetName
@@ -115,7 +116,7 @@ function handleHeaderPlanetsMouseover(e, planets) {
 function handleHeaderPlanetsMouseout(e) {
   if (!e.target.classList.contains("header__planet")) return;
 
-  // Change the border-top color of the 'header__planet' back to transparent
+  // Change the border-top color of the 'header__planet' that was just hovered back to transparent
   e.target.style.borderTop = "0.4rem solid transparent";
 }
 
