@@ -33,6 +33,9 @@ const sourceLink = document.querySelector(".source__link");
 const sourceWindow = document.querySelector(".source__window");
 const planetDataValue = document.querySelectorAll(".planet-info__data-value");
 const sidebar = document.querySelector(".sidebar");
+const contentContainer = document.querySelectorAll(
+  ".planet-info__content-container"
+);
 
 // FUNCTIONS
 function updatePlanetInfo(target, labelContainer) {
@@ -49,6 +52,10 @@ function updatePlanetInfo(target, labelContainer) {
       planetDetails.innerHTML = currentPlanetData.overview.content;
       sourceLink.href = currentPlanetData.overview.source;
       sourceWindow.href = currentPlanetData.overview.source;
+
+      contentContainer[0].classList.remove("content-container--selected");
+      contentContainer[currentLabelIndex].style.background =
+        currentPlanetData.color;
     }
 
     if (currentLabelIndex === 1) {
@@ -56,6 +63,10 @@ function updatePlanetInfo(target, labelContainer) {
       planetDetails.innerHTML = currentPlanetData.structure.content;
       sourceLink.href = currentPlanetData.structure.source;
       sourceWindow.href = currentPlanetData.structure.source;
+
+      contentContainer[0].classList.remove("content-container--selected");
+      contentContainer[currentLabelIndex].style.background =
+        currentPlanetData.color;
     }
 
     if (currentLabelIndex === 2) {
@@ -63,6 +74,10 @@ function updatePlanetInfo(target, labelContainer) {
       planetDetails.innerHTML = currentPlanetData.geology.content;
       sourceLink.href = currentPlanetData.geology.source;
       sourceWindow.href = currentPlanetData.geology.source;
+
+      contentContainer[0].classList.remove("content-container--selected");
+      contentContainer[currentLabelIndex].style.background =
+        currentPlanetData.color;
     }
   }
 }
@@ -176,9 +191,6 @@ sidebar.addEventListener("click", handleSidebarPlanetClick);
 
 // VARIABLES
 const planetInfoContent = document.querySelector(".planet-info__content");
-const contentContainer = document.querySelectorAll(
-  ".planet-info__content-container"
-);
 
 // EVENT LISTENER CALLBACK FUNCTIONS
 function handleHeaderPlanetsClick(e) {
