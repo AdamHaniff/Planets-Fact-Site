@@ -80,6 +80,21 @@ function selectContainer(target, contentContainer, currentPlanetData) {
   }
 }
 
+function changeContentContainerBackground(
+  contentContainer,
+  currentLabelIndex,
+  currentPlanetData
+) {
+  contentContainer[0].classList.remove("content-container--selected");
+  // Change each content container's background back to its initial state
+  contentContainer.forEach((container) => {
+    container.style.background = "initial";
+  });
+  // Change the background of the content container that corresponds with the label that was selected
+  contentContainer[currentLabelIndex].style.background =
+    currentPlanetData.color;
+}
+
 function selectOverviewContainer(contentContainer, currentPlanetData) {
   const overviewContainer = contentContainer[0];
   overviewContainer.classList.remove("content-container--selected");
@@ -100,12 +115,16 @@ function addOrRemoveContainerHoverClass(e, eventName) {
   }
 }
 
+function isViewportWidthBelowThreshold() {
+  const viewportWidth = window.innerWidth;
+  if (viewportWidth < 1104) return true;
+}
+
 function handleHeaderPlanetsMouseover(e, planets) {
   if (!e.target.classList.contains("header__planet")) return;
 
   // If the viewport width is less than 1104px, then do nothing
-  const viewportWidth = window.innerWidth;
-  if (viewportWidth < 1104) return;
+  if (isViewportWidthBelowThreshold()) return;
 
   // Find the data for the 'header__planet' that was hovered
   const headerPlanetName = e.target.textContent.toLowerCase();
@@ -121,8 +140,7 @@ function handleHeaderPlanetsMouseout(e) {
   if (!e.target.classList.contains("header__planet")) return;
 
   // If the viewport width is less than 1104px, then do nothing
-  const viewportWidth = window.innerWidth;
-  if (viewportWidth < 1104) return;
+  if (isViewportWidthBelowThreshold()) return;
 
   // Change the border-top color of the 'header__planet' that was just hovered back to transparent
   e.target.style.borderTop = "0.4rem solid transparent";
@@ -137,6 +155,7 @@ export {
   displayFactsAndInfo,
   hideFactsAndInfo,
   selectContainer,
+  changeContentContainerBackground,
   selectOverviewContainer,
   addOrRemoveContainerHoverClass,
   handleHeaderPlanetsMouseover,

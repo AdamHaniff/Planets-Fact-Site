@@ -7,6 +7,7 @@ import {
   displayFactsAndInfo,
   hideFactsAndInfo,
   selectContainer,
+  changeContentContainerBackground,
   selectOverviewContainer,
   addOrRemoveContainerHoverClass,
   handleHeaderPlanetsMouseover,
@@ -45,39 +46,47 @@ function updatePlanetInfo(target, labelContainer) {
     if (target === labelContainer[currentLabelIndex]) break;
 
     // If a new label is clicked, then update 'currentLabelIndex'
-    if (target === label) currentLabelIndex = index;
+    if (target === label) {
+      currentLabelIndex = index;
 
-    if (currentLabelIndex === 0) {
-      planetImage.src = currentPlanetData.images.planet;
-      planetDetails.innerHTML = currentPlanetData.overview.content;
-      sourceLink.href = currentPlanetData.overview.source;
-      sourceWindow.href = currentPlanetData.overview.source;
+      if (currentLabelIndex === 0) {
+        planetImage.src = currentPlanetData.images.planet;
+        planetDetails.innerHTML = currentPlanetData.overview.content;
+        sourceLink.href = currentPlanetData.overview.source;
+        sourceWindow.href = currentPlanetData.overview.source;
 
-      contentContainer[0].classList.remove("content-container--selected");
-      contentContainer[currentLabelIndex].style.background =
-        currentPlanetData.color;
-    }
+        changeContentContainerBackground(
+          contentContainer,
+          currentLabelIndex,
+          currentPlanetData
+        );
+      }
 
-    if (currentLabelIndex === 1) {
-      planetImage.src = currentPlanetData.images.internal;
-      planetDetails.innerHTML = currentPlanetData.structure.content;
-      sourceLink.href = currentPlanetData.structure.source;
-      sourceWindow.href = currentPlanetData.structure.source;
+      if (currentLabelIndex === 1) {
+        planetImage.src = currentPlanetData.images.internal;
+        planetDetails.innerHTML = currentPlanetData.structure.content;
+        sourceLink.href = currentPlanetData.structure.source;
+        sourceWindow.href = currentPlanetData.structure.source;
 
-      contentContainer[0].classList.remove("content-container--selected");
-      contentContainer[currentLabelIndex].style.background =
-        currentPlanetData.color;
-    }
+        changeContentContainerBackground(
+          contentContainer,
+          currentLabelIndex,
+          currentPlanetData
+        );
+      }
 
-    if (currentLabelIndex === 2) {
-      planetImage.src = currentPlanetData.images.geology;
-      planetDetails.innerHTML = currentPlanetData.geology.content;
-      sourceLink.href = currentPlanetData.geology.source;
-      sourceWindow.href = currentPlanetData.geology.source;
+      if (currentLabelIndex === 2) {
+        planetImage.src = currentPlanetData.images.geology;
+        planetDetails.innerHTML = currentPlanetData.geology.content;
+        sourceLink.href = currentPlanetData.geology.source;
+        sourceWindow.href = currentPlanetData.geology.source;
 
-      contentContainer[0].classList.remove("content-container--selected");
-      contentContainer[currentLabelIndex].style.background =
-        currentPlanetData.color;
+        changeContentContainerBackground(
+          contentContainer,
+          currentLabelIndex,
+          currentPlanetData
+        );
+      }
     }
   }
 }
