@@ -1,6 +1,7 @@
 import {
   selectLabel,
   deselectLabel,
+  selectLabelAndLabelContainer,
   hideSidebar,
   displaySidebar,
   selectOverviewLabel,
@@ -27,6 +28,9 @@ const headerPlanets = document.querySelector(".header__planets");
 const planetFacts = document.querySelector(".planet-facts");
 const planetInfo = document.querySelector(".planet-info");
 const planetFactsLabel = document.querySelectorAll(".planet-facts__label");
+const planetFactsLabelContainer = document.querySelectorAll(
+  ".planet-facts__label-container"
+);
 const planetImage = document.querySelector(".planet-info__img");
 const planetName = document.querySelector(".planet-info__name");
 const planetDetails = document.querySelector(".planet-info__details");
@@ -231,6 +235,15 @@ function handlePlanetInfoContentClick(e) {
 
   // Change the background of the selected container and remove the background of the previously selected container
   selectContainer(target, contentContainer, currentPlanetData);
+
+  // Select the 'planetFactsLabel' and 'planetFactsLabelContainer' that corresponds with the content container that was selected
+  selectLabelAndLabelContainer(
+    contentContainer,
+    target,
+    planetFactsLabelContainer,
+    currentPlanetData,
+    planetFactsLabel
+  );
 }
 
 // TABLET SITE EVENT LISTENERS

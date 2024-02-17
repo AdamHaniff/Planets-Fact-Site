@@ -3,24 +3,55 @@ function selectLabel(target, currentPlanetData) {
   // Do nothing if the label is already selected
   if (target.classList.contains("label--selected")) return;
 
-  // Make label color white
-  target.classList.remove("label--not-selected");
-  target.classList.add("label--selected");
+  makeLabelWhite(target);
 
   // Add border-bottom to label container
   const labelContainer = target.closest(".planet-facts__label-container");
   labelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
 }
 
+function deselectLabelContainer(labelContainer) {
+  labelContainer.classList.remove("container--selected");
+  labelContainer.style.borderBottom = "0.4rem solid transparent";
+}
+
 function deselectLabel(label) {
-  // Make label color 'white50Percent'
+  makeLabelWhite50Percent(label);
+
+  // Make the border-bottom of the label container that was not selected transparent
+  const labelContainer = label.closest(".planet-facts__label-container");
+  deselectLabelContainer(labelContainer);
+}
+
+function makeLabelWhite(label) {
+  label.classList.remove("label--not-selected");
+  label.classList.add("label--selected");
+}
+
+function makeLabelWhite50Percent(label) {
   label.classList.remove("label--selected");
   label.classList.add("label--not-selected");
+}
 
-  // Remove border-bottom from label that was not selected
-  const labelContainer = label.closest(".planet-facts__label-container");
-  labelContainer.classList.remove("container--selected");
-  labelContainer.style.borderBottom = "initial";
+function selectLabelAndLabelContainer(
+  contentContainer,
+  target,
+  planetFactsLabelContainer,
+  currentPlanetData,
+  planetFactsLabel
+) {
+  for (let i = 0; i < contentContainer.length; i++) {
+    if (target === contentContainer[i]) {
+      planetFactsLabelContainer[
+        i
+      ].style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
+
+      makeLabelWhite(planetFactsLabel[i]);
+    } else {
+      deselectLabelContainer(planetFactsLabelContainer[i]);
+      makeLabelWhite50Percent(planetFactsLabel[i]);
+    }
+  }
 }
 
 function hideSidebar(headerMenuIcon, sidebar) {
@@ -149,6 +180,7 @@ function handleHeaderPlanetsMouseout(e) {
 export {
   selectLabel,
   deselectLabel,
+  selectLabelAndLabelContainer,
   hideSidebar,
   displaySidebar,
   selectOverviewLabel,
