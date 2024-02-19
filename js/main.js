@@ -1,6 +1,8 @@
 import {
   selectLabel,
   deselectLabel,
+  removeElement,
+  insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
   hideSidebar,
   displaySidebar,
@@ -22,6 +24,7 @@ import planets from "./data";
 let currentPlanet = "mercury";
 let currentPlanetData = planets[0];
 let currentLabelIndex = 0;
+let planetSurfaceImage;
 const headerMenuBtn = document.querySelector(".header__menu-btn");
 const headerMenuIcon = document.querySelector(".header__menu-icon");
 const headerPlanets = document.querySelector(".header__planets");
@@ -55,6 +58,7 @@ function updatePlanetInfo(target, labelContainer) {
 
       if (currentLabelIndex === 0) {
         planetImage.src = currentPlanetData.images.planet;
+        removeElement(planetSurfaceImage);
         planetDetails.innerHTML = currentPlanetData.overview.content;
         sourceLink.href = currentPlanetData.overview.source;
         sourceWindow.href = currentPlanetData.overview.source;
@@ -68,6 +72,7 @@ function updatePlanetInfo(target, labelContainer) {
 
       if (currentLabelIndex === 1) {
         planetImage.src = currentPlanetData.images.internal;
+        removeElement(planetSurfaceImage);
         planetDetails.innerHTML = currentPlanetData.structure.content;
         sourceLink.href = currentPlanetData.structure.source;
         sourceWindow.href = currentPlanetData.structure.source;
@@ -80,7 +85,12 @@ function updatePlanetInfo(target, labelContainer) {
       }
 
       if (currentLabelIndex === 2) {
-        planetImage.src = currentPlanetData.images.geology;
+        planetImage.src = currentPlanetData.images.planet;
+        insertPlanetSurfaceImage(
+          currentPlanetData,
+          planetImage,
+          planetSurfaceImage
+        );
         planetDetails.innerHTML = currentPlanetData.geology.content;
         sourceLink.href = currentPlanetData.geology.source;
         sourceWindow.href = currentPlanetData.geology.source;

@@ -33,6 +33,21 @@ function makeLabelWhite50Percent(label) {
   label.classList.add("label--not-selected");
 }
 
+function removeElement(element) {
+  if (element) element.remove();
+}
+
+function insertPlanetSurfaceImage(
+  currentPlanetData,
+  planetImage,
+  planetSurfaceImage
+) {
+  const planetSurfaceImageHTML = `<img class='planet-info__surface-img' src=${currentPlanetData.images.geology} alt='Planet image'/>`;
+  // Insert 'planetSurfaceImage' right after 'planetImage'
+  planetImage.insertAdjacentHTML("afterend", planetSurfaceImageHTML);
+  planetSurfaceImage = document.querySelector(".planet-info__surface-img");
+}
+
 function selectLabelAndLabelContainer(
   contentContainer,
   target,
@@ -180,6 +195,8 @@ function handleHeaderPlanetsMouseout(e) {
 export {
   selectLabel,
   deselectLabel,
+  removeElement,
+  insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
   hideSidebar,
   displaySidebar,
