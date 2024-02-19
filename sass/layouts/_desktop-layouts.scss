@@ -32,10 +32,19 @@
       margin-bottom: 8.7rem;
     }
 
+    &__images {
+      margin-bottom: initial;
+    }
+
     &__img {
       width: 24.5rem;
       height: 24.5rem;
-      margin-bottom: initial;
+    }
+
+    &__surface-img {
+      width: 13.25rem;
+      height: 16.25rem;
+      top: 18.5rem;
     }
 
     &__container {
@@ -118,9 +127,19 @@
       gap: 30rem;
     }
 
+    // &__images {
+    //   margin-left: 15.36rem;
+    // }
+
     &__img {
       width: 29rem;
       height: 29rem;
+    }
+
+    &__surface-img {
+      width: 16.3rem;
+      height: 19.9rem;
+      top: 22rem;
     }
 
     &__name {

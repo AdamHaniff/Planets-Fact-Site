@@ -254,10 +254,17 @@ body {
     flex-direction: column;
     align-items: center;
   }
+  .planet-info__images {
+    margin-bottom: 13rem;
+  }
   .planet-info__img {
     width: 18.4rem;
     height: 18.4rem;
-    margin-bottom: 13rem;
+  }
+  .planet-info__surface-img {
+    width: 10.2rem;
+    height: 12.6rem;
+    top: 14rem;
   }
   .planet-info__name {
     text-align: initial;
@@ -348,10 +355,17 @@ body {
     gap: 15rem;
     margin-bottom: 8.7rem;
   }
+  .planet-info__images {
+    margin-bottom: initial;
+  }
   .planet-info__img {
     width: 24.5rem;
     height: 24.5rem;
-    margin-bottom: initial;
+  }
+  .planet-info__surface-img {
+    width: 13.25rem;
+    height: 16.25rem;
+    top: 18.5rem;
   }
   .planet-info__container {
     width: 35rem;
@@ -418,6 +432,11 @@ body {
   .planet-info__img {
     width: 29rem;
     height: 29rem;
+  }
+  .planet-info__surface-img {
+    width: 16.3rem;
+    height: 19.9rem;
+    top: 22rem;
   }
   .planet-info__name {
     font-size: 8rem;

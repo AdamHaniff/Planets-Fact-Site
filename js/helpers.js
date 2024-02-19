@@ -40,12 +40,14 @@ function removeElement(element) {
 function insertPlanetSurfaceImage(
   currentPlanetData,
   planetImage,
-  planetSurfaceImage
+  planetSurfaceImageObj
 ) {
   const planetSurfaceImageHTML = `<img class='planet-info__surface-img' src=${currentPlanetData.images.geology} alt='Planet image'/>`;
   // Insert 'planetSurfaceImage' right after 'planetImage'
   planetImage.insertAdjacentHTML("afterend", planetSurfaceImageHTML);
-  planetSurfaceImage = document.querySelector(".planet-info__surface-img");
+  planetSurfaceImageObj.image = document.querySelector(
+    ".planet-info__surface-img"
+  );
 }
 
 function selectLabelAndLabelContainer(

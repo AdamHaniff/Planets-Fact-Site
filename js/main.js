@@ -24,7 +24,6 @@ import planets from "./data";
 let currentPlanet = "mercury";
 let currentPlanetData = planets[0];
 let currentLabelIndex = 0;
-let planetSurfaceImage;
 const headerMenuBtn = document.querySelector(".header__menu-btn");
 const headerMenuIcon = document.querySelector(".header__menu-icon");
 const headerPlanets = document.querySelector(".header__planets");
@@ -44,6 +43,9 @@ const sidebar = document.querySelector(".sidebar");
 const contentContainer = document.querySelectorAll(
   ".planet-info__content-container"
 );
+const planetSurfaceImageObj = {
+  image: undefined,
+};
 
 // FUNCTIONS
 function updatePlanetInfo(target, labelContainer) {
@@ -58,7 +60,7 @@ function updatePlanetInfo(target, labelContainer) {
 
       if (currentLabelIndex === 0) {
         planetImage.src = currentPlanetData.images.planet;
-        removeElement(planetSurfaceImage);
+        removeElement(planetSurfaceImageObj.image);
         planetDetails.innerHTML = currentPlanetData.overview.content;
         sourceLink.href = currentPlanetData.overview.source;
         sourceWindow.href = currentPlanetData.overview.source;
@@ -72,7 +74,7 @@ function updatePlanetInfo(target, labelContainer) {
 
       if (currentLabelIndex === 1) {
         planetImage.src = currentPlanetData.images.internal;
-        removeElement(planetSurfaceImage);
+        removeElement(planetSurfaceImageObj.image);
         planetDetails.innerHTML = currentPlanetData.structure.content;
         sourceLink.href = currentPlanetData.structure.source;
         sourceWindow.href = currentPlanetData.structure.source;
@@ -89,7 +91,7 @@ function updatePlanetInfo(target, labelContainer) {
         insertPlanetSurfaceImage(
           currentPlanetData,
           planetImage,
-          planetSurfaceImage
+          planetSurfaceImageObj
         );
         planetDetails.innerHTML = currentPlanetData.geology.content;
         sourceLink.href = currentPlanetData.geology.source;
@@ -107,6 +109,7 @@ function updatePlanetInfo(target, labelContainer) {
 
 function updateHTML() {
   planetImage.src = currentPlanetData.images.planet;
+  removeElement(planetSurfaceImageObj.image);
   planetName.textContent = currentPlanetData.name;
   planetDetails.textContent = currentPlanetData.overview.content;
   sourceLink.href = currentPlanetData.overview.source;

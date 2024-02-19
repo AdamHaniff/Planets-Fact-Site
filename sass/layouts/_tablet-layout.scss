@@ -38,10 +38,19 @@
     flex-direction: column;
     align-items: center;
 
+    &__images {
+      margin-bottom: 13rem;
+    }
+
     &__img {
       width: 18.4rem;
       height: 18.4rem;
-      margin-bottom: 13rem;
+    }
+
+    &__surface-img {
+      width: 10.2rem;
+      height: 12.6rem;
+      top: 14rem;
     }
 
     &__name {
