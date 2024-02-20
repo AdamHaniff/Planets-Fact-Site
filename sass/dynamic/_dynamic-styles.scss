@@ -4,8 +4,14 @@
 }
 
 // ************* HEADER *************
-.header__menu-icon--clicked {
-  fill: $color-white25Percent;
+.header {
+  &__menu-icon--clicked {
+    fill: $color-white25Percent;
+  }
+
+  &__planet--selected {
+    color: $color-celestialBlue;
+  }
 }
 
 // ********** PLANET-FACTS **********

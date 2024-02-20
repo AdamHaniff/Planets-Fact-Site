@@ -429,6 +429,9 @@ body {
   .planet-info__img-container {
     gap: 30rem;
   }
+  .planet-info__images {
+    margin-left: 15.364rem;
+  }
   .planet-info__img {
     width: 29rem;
     height: 29rem;
@@ -477,6 +480,9 @@ body {
 
 .header__menu-icon--clicked {
   fill: rgba(255, 255, 255, 0.25);
+}
+.header__planet--selected {
+  color: #419ebb;
 }
 
 .container--selected {

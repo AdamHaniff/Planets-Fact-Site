@@ -194,6 +194,32 @@ function handleHeaderPlanetsMouseout(e) {
   e.target.style.borderTop = "0.4rem solid transparent";
 }
 
+function changeHeaderPlanetColor(
+  headerPlanet,
+  elementClicked,
+  currentPlanet,
+  currentPlanetData,
+  target
+) {
+  for (let element of headerPlanet) {
+    // Reset the color of all 'header__planet' elements back to white
+    element.classList.remove("header__planet--selected");
+    element.style.color = "#fff";
+
+    // Change the color of the 'header__planet' element that corresponds with the 'sidebar__planet-container' that was clicked
+    if (elementClicked === "sidebar__planet-container") {
+      if (element.textContent.toLowerCase() === currentPlanet) {
+        element.style.color = currentPlanetData.color;
+      }
+    }
+  }
+
+  // Change the color of the 'header__planet' element that was clicked to that planet's color
+  if (elementClicked === "header__planet") {
+    target.style.color = currentPlanetData.color;
+  }
+}
+
 export {
   selectLabel,
   deselectLabel,
@@ -211,4 +237,5 @@ export {
   addOrRemoveContainerHoverClass,
   handleHeaderPlanetsMouseover,
   handleHeaderPlanetsMouseout,
+  changeHeaderPlanetColor,
 };

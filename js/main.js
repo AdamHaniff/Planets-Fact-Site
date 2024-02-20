@@ -15,6 +15,7 @@ import {
   addOrRemoveContainerHoverClass,
   handleHeaderPlanetsMouseover,
   handleHeaderPlanetsMouseout,
+  changeHeaderPlanetColor,
 } from "./helpers";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
@@ -26,7 +27,8 @@ let currentPlanetData = planets[0];
 let currentLabelIndex = 0;
 const headerMenuBtn = document.querySelector(".header__menu-btn");
 const headerMenuIcon = document.querySelector(".header__menu-icon");
-const headerPlanets = document.querySelector(".header__planets");
+const headerPlanetsContainer = document.querySelector(".header__planets");
+const headerPlanet = document.querySelectorAll(".header__planet");
 const planetFacts = document.querySelector(".planet-facts");
 const planetInfo = document.querySelector(".planet-info");
 const planetFactsLabel = document.querySelectorAll(".planet-facts__label");
@@ -206,6 +208,14 @@ function handleSidebarPlanetClick(e) {
 
   // Display 'planetFacts' and 'planetInfo'
   displayFactsAndInfo(planetFacts, planetInfo);
+
+  changeHeaderPlanetColor(
+    headerPlanet,
+    "sidebar__planet-container",
+    currentPlanet,
+    currentPlanetData,
+    undefined
+  );
 }
 
 // EVENT LISTENERS
@@ -222,10 +232,19 @@ const planetInfoContent = document.querySelector(".planet-info__content");
 function handleHeaderPlanetsClick(e) {
   const target = e.target;
   if (!target.classList.contains("header__planet")) return;
+  if (target.classList.contains("header__planet--selected")) return;
 
   const headerPlanetName = target.textContent.toLowerCase();
   // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
   updateCurrentPlanet(headerPlanetName);
+
+  changeHeaderPlanetColor(
+    headerPlanet,
+    "header__planet",
+    currentPlanet,
+    currentPlanetData,
+    target
+  );
 
   // Remove the background color from the container that is currently selected
   for (let container of contentContainer) {
@@ -260,15 +279,18 @@ function handlePlanetInfoContentClick(e) {
 }
 
 // TABLET SITE EVENT LISTENERS
-headerPlanets.addEventListener("click", handleHeaderPlanetsClick);
+headerPlanetsContainer.addEventListener("click", handleHeaderPlanetsClick);
 planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
 
 // DESKTOP SITE EVENT LISTENERS
-headerPlanets.addEventListener("mouseover", (e) =>
+headerPlanetsContainer.addEventListener("mouseover", (e) =>
   handleHeaderPlanetsMouseover(e, planets)
 );
 
-headerPlanets.addEventListener("mouseout", handleHeaderPlanetsMouseout);
+headerPlanetsContainer.addEventListener(
+  "mouseout",
+  handleHeaderPlanetsMouseout
+);
 
 planetInfoContent.addEventListener("mouseover", (e) =>
   addOrRemoveContainerHoverClass(e, "mouseover")
