@@ -4,6 +4,8 @@ import {
   removeElement,
   insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
+  changeLabelContainerBorderColor,
+  makeLabelWhite,
   hideSidebar,
   displaySidebar,
   selectOverviewLabel,
@@ -244,6 +246,20 @@ function handleHeaderPlanetsClick(e) {
     currentPlanet,
     currentPlanetData,
     target
+  );
+
+  // MAYBE TURN THIS INTO A FUNCTION
+  for (let label of planetFactsLabel) {
+    if (label.classList.contains("label--selected")) {
+      deselectLabel(label);
+    }
+  }
+
+  makeLabelWhite(planetFactsLabel[0]);
+
+  changeLabelContainerBorderColor(
+    planetFactsLabelContainer[0],
+    currentPlanetData.color
   );
 
   // Remove the background color from the container that is currently selected

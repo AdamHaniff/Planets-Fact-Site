@@ -10,9 +10,9 @@ function selectLabel(target, currentPlanetData) {
   labelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
 }
 
-function deselectLabelContainer(labelContainer) {
+function changeLabelContainerBorderColor(labelContainer, color) {
   labelContainer.classList.remove("container--selected");
-  labelContainer.style.borderBottom = "0.4rem solid transparent";
+  labelContainer.style.borderBottom = `0.4rem solid ${color}`;
 }
 
 function deselectLabel(label) {
@@ -20,7 +20,7 @@ function deselectLabel(label) {
 
   // Make the border-bottom of the label container that was not selected transparent
   const labelContainer = label.closest(".planet-facts__label-container");
-  deselectLabelContainer(labelContainer);
+  changeLabelContainerBorderColor(labelContainer, "transparent");
 }
 
 function makeLabelWhite(label) {
@@ -65,7 +65,11 @@ function selectLabelAndLabelContainer(
 
       makeLabelWhite(planetFactsLabel[i]);
     } else {
-      deselectLabelContainer(planetFactsLabelContainer[i]);
+      changeLabelContainerBorderColor(
+        planetFactsLabelContainer[i],
+        "transparent"
+      );
+
       makeLabelWhite50Percent(planetFactsLabel[i]);
     }
   }
@@ -91,8 +95,7 @@ function displaySidebar(
 function selectOverviewLabel(planetFactsLabel, currentPlanetData) {
   // Give the overview label the "label--selected" class
   const overviewLabel = planetFactsLabel[0];
-  overviewLabel.classList.remove("label--not-selected");
-  overviewLabel.classList.add("label--selected");
+  makeLabelWhite(overviewLabel);
 
   // Change border-bottom color of the overview label container to the planet's border color
   const overviewLabelContainer = document.querySelector(
@@ -226,6 +229,8 @@ export {
   removeElement,
   insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
+  changeLabelContainerBorderColor,
+  makeLabelWhite,
   hideSidebar,
   displaySidebar,
   selectOverviewLabel,
