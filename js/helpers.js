@@ -1,8 +1,5 @@
 // HELPERS
 function selectLabel(target, currentPlanetData) {
-  // Do nothing if the label is already selected
-  if (target.classList.contains("label--selected")) return;
-
   makeLabelWhite(target);
 
   // Add border-bottom to label container
@@ -31,6 +28,25 @@ function makeLabelWhite(label) {
 function makeLabelWhite50Percent(label) {
   label.classList.remove("label--selected");
   label.classList.add("label--not-selected");
+}
+
+function updatePlanetFactsLabel(
+  planetFactsLabel,
+  planetFactsLabelContainer,
+  currentPlanetData
+) {
+  for (let label of planetFactsLabel) {
+    if (label.classList.contains("label--selected")) {
+      deselectLabel(label);
+    }
+  }
+
+  makeLabelWhite(planetFactsLabel[0]);
+
+  changeLabelContainerBorderColor(
+    planetFactsLabelContainer[0],
+    currentPlanetData.color
+  );
 }
 
 function removeElement(element) {
@@ -90,18 +106,6 @@ function displaySidebar(
   headerMenuIcon.classList.add("header__menu-icon--clicked");
   hideFactsAndInfo(planetFacts, planetInfo);
   sidebar.classList.add("sidebar--open");
-}
-
-function selectOverviewLabel(planetFactsLabel, currentPlanetData) {
-  // Give the overview label the "label--selected" class
-  const overviewLabel = planetFactsLabel[0];
-  makeLabelWhite(overviewLabel);
-
-  // Change border-bottom color of the overview label container to the planet's border color
-  const overviewLabelContainer = document.querySelector(
-    ".planet-facts__label-container"
-  );
-  overviewLabelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
 }
 
 function displayFactsAndInfo(planetFacts, planetInfo) {
@@ -171,11 +175,18 @@ function isViewportWidthBelowThreshold() {
   if (viewportWidth < 1104) return true;
 }
 
+function isTouchDevice() {
+  return "ontouchstart" in window ? true : false;
+}
+
 function handleHeaderPlanetsMouseover(e, planets) {
   if (!e.target.classList.contains("header__planet")) return;
 
   // If the viewport width is less than 1104px, then do nothing
   if (isViewportWidthBelowThreshold()) return;
+
+  // If the device is a touch device, then do nothing
+  if (isTouchDevice()) return;
 
   // Find the data for the 'header__planet' that was hovered
   const headerPlanetName = e.target.textContent.toLowerCase();
@@ -192,6 +203,9 @@ function handleHeaderPlanetsMouseout(e) {
 
   // If the viewport width is less than 1104px, then do nothing
   if (isViewportWidthBelowThreshold()) return;
+
+  // If the device is a touch device, then do nothing
+  if (isTouchDevice()) return;
 
   // Change the border-top color of the 'header__planet' that was just hovered back to transparent
   e.target.style.borderTop = "0.4rem solid transparent";
@@ -229,11 +243,9 @@ export {
   removeElement,
   insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
-  changeLabelContainerBorderColor,
-  makeLabelWhite,
+  updatePlanetFactsLabel,
   hideSidebar,
   displaySidebar,
-  selectOverviewLabel,
   displayFactsAndInfo,
   hideFactsAndInfo,
   selectContainer,

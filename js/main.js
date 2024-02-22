@@ -4,11 +4,9 @@ import {
   removeElement,
   insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
-  changeLabelContainerBorderColor,
-  makeLabelWhite,
+  updatePlanetFactsLabel,
   hideSidebar,
   displaySidebar,
-  selectOverviewLabel,
   displayFactsAndInfo,
   hideFactsAndInfo,
   selectContainer,
@@ -146,6 +144,7 @@ function handlePlanetFactsLabelClick(e) {
 
   for (let label of planetFactsLabel) {
     if (label === target) {
+      if (target.classList.contains("label--selected")) return;
       selectLabel(target, currentPlanetData);
     } else {
       deselectLabel(label);
@@ -203,7 +202,7 @@ function handleSidebarPlanetClick(e) {
   }
 
   // Select the overview label and change the border-bottom color of the label's container to the planet's color
-  selectOverviewLabel(planetFactsLabel, currentPlanetData);
+  selectLabel(planetFactsLabel[0], currentPlanetData);
 
   // Update HTML in 'planetInfo'
   updateHTML();
@@ -211,12 +210,20 @@ function handleSidebarPlanetClick(e) {
   // Display 'planetFacts' and 'planetInfo'
   displayFactsAndInfo(planetFacts, planetInfo);
 
+  // Change the color of the 'header__planet' element that corresponds with the 'sidebar__planet-container' that was clicked
   changeHeaderPlanetColor(
     headerPlanet,
     "sidebar__planet-container",
     currentPlanet,
     currentPlanetData,
     undefined
+  );
+
+  // Select the overview content container
+  changeContentContainerBackground(
+    contentContainer,
+    currentLabelIndex,
+    currentPlanetData
   );
 }
 
@@ -240,6 +247,7 @@ function handleHeaderPlanetsClick(e) {
   // Update 'currentPlanet' and 'currentPlanetData' to the planet that was clicked
   updateCurrentPlanet(headerPlanetName);
 
+  // Change the 'header__planet' color that was clicked to that planet's color
   changeHeaderPlanetColor(
     headerPlanet,
     "header__planet",
@@ -248,18 +256,11 @@ function handleHeaderPlanetsClick(e) {
     target
   );
 
-  // MAYBE TURN THIS INTO A FUNCTION
-  for (let label of planetFactsLabel) {
-    if (label.classList.contains("label--selected")) {
-      deselectLabel(label);
-    }
-  }
-
-  makeLabelWhite(planetFactsLabel[0]);
-
-  changeLabelContainerBorderColor(
-    planetFactsLabelContainer[0],
-    currentPlanetData.color
+  // Select first 'planetFactsLabel'
+  updatePlanetFactsLabel(
+    planetFactsLabel,
+    planetFactsLabelContainer,
+    currentPlanetData
   );
 
   // Remove the background color from the container that is currently selected
