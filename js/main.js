@@ -11,10 +11,8 @@ import {
   hideFactsAndInfo,
   selectContainer,
   changeContentContainerBackground,
-  selectOverviewContainer,
   addOrRemoveContainerHoverClass,
-  handleHeaderPlanetsMouseover,
-  handleHeaderPlanetsMouseout,
+  handleHeaderPlanetsHover,
   changeHeaderPlanetColor,
 } from "./helpers";
 import "core-js/stable";
@@ -257,19 +255,14 @@ function handleHeaderPlanetsClick(e) {
   );
 
   // Select first 'planetFactsLabel'
-  updatePlanetFactsLabel(
-    planetFactsLabel,
-    planetFactsLabelContainer,
-    currentPlanetData
-  );
-
-  // Remove the background color from the container that is currently selected
-  for (let container of contentContainer) {
-    container.style.background = "initial";
-  }
+  updatePlanetFactsLabel(planetFactsLabel, currentPlanetData);
 
   // Select the overview container and change its background color to the new planet's color
-  selectOverviewContainer(contentContainer, currentPlanetData);
+  changeContentContainerBackground(
+    contentContainer,
+    currentLabelIndex,
+    currentPlanetData
+  );
 
   // Update HTML in 'planetInfo'
   updateHTML();
@@ -289,7 +282,6 @@ function handlePlanetInfoContentClick(e) {
   selectLabelAndLabelContainer(
     contentContainer,
     target,
-    planetFactsLabelContainer,
     currentPlanetData,
     planetFactsLabel
   );
@@ -301,12 +293,11 @@ planetInfoContent.addEventListener("click", handlePlanetInfoContentClick);
 
 // DESKTOP SITE EVENT LISTENERS
 headerPlanetsContainer.addEventListener("mouseover", (e) =>
-  handleHeaderPlanetsMouseover(e, planets)
+  handleHeaderPlanetsHover(e, planets, "mouseover")
 );
 
-headerPlanetsContainer.addEventListener(
-  "mouseout",
-  handleHeaderPlanetsMouseout
+headerPlanetsContainer.addEventListener("mouseout", (e) =>
+  handleHeaderPlanetsHover(e, planets, "mouseout")
 );
 
 planetInfoContent.addEventListener("mouseover", (e) =>

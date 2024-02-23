@@ -1,23 +1,27 @@
 // HELPERS
-function selectLabel(target, currentPlanetData) {
-  makeLabelWhite(target);
-
-  // Add border-bottom to label container
-  const labelContainer = target.closest(".planet-facts__label-container");
-  labelContainer.style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
-}
-
 function changeLabelContainerBorderColor(labelContainer, color) {
   labelContainer.classList.remove("container--selected");
   labelContainer.style.borderBottom = `0.4rem solid ${color}`;
+}
+
+function selectLabel(target, currentPlanetData) {
+  makeLabelWhite(target);
+
+  // Change the label container's border-bottom color to the current planet's color
+  changeLabelContainerBorderColor(
+    target.closest(".planet-facts__label-container"),
+    currentPlanetData.color
+  );
 }
 
 function deselectLabel(label) {
   makeLabelWhite50Percent(label);
 
   // Make the border-bottom of the label container that was not selected transparent
-  const labelContainer = label.closest(".planet-facts__label-container");
-  changeLabelContainerBorderColor(labelContainer, "transparent");
+  changeLabelContainerBorderColor(
+    label.closest(".planet-facts__label-container"),
+    "transparent"
+  );
 }
 
 function makeLabelWhite(label) {
@@ -30,23 +34,15 @@ function makeLabelWhite50Percent(label) {
   label.classList.add("label--not-selected");
 }
 
-function updatePlanetFactsLabel(
-  planetFactsLabel,
-  planetFactsLabelContainer,
-  currentPlanetData
-) {
+function updatePlanetFactsLabel(planetFactsLabel, currentPlanetData) {
   for (let label of planetFactsLabel) {
     if (label.classList.contains("label--selected")) {
       deselectLabel(label);
     }
   }
 
-  makeLabelWhite(planetFactsLabel[0]);
-
-  changeLabelContainerBorderColor(
-    planetFactsLabelContainer[0],
-    currentPlanetData.color
-  );
+  // Make the first 'planetFactsLabel' white and change the label container's border-bottom color to that planet's color
+  selectLabel(planetFactsLabel[0], currentPlanetData);
 }
 
 function removeElement(element) {
@@ -59,6 +55,7 @@ function insertPlanetSurfaceImage(
   planetSurfaceImageObj
 ) {
   const planetSurfaceImageHTML = `<img class='planet-info__surface-img' src=${currentPlanetData.images.geology} alt='Planet image'/>`;
+
   // Insert 'planetSurfaceImage' right after 'planetImage'
   planetImage.insertAdjacentHTML("afterend", planetSurfaceImageHTML);
   planetSurfaceImageObj.image = document.querySelector(
@@ -69,24 +66,14 @@ function insertPlanetSurfaceImage(
 function selectLabelAndLabelContainer(
   contentContainer,
   target,
-  planetFactsLabelContainer,
   currentPlanetData,
   planetFactsLabel
 ) {
   for (let i = 0; i < contentContainer.length; i++) {
     if (target === contentContainer[i]) {
-      planetFactsLabelContainer[
-        i
-      ].style.borderBottom = `0.4rem solid ${currentPlanetData.color}`;
-
-      makeLabelWhite(planetFactsLabel[i]);
+      selectLabel(planetFactsLabel[i], currentPlanetData);
     } else {
-      changeLabelContainerBorderColor(
-        planetFactsLabelContainer[i],
-        "transparent"
-      );
-
-      makeLabelWhite50Percent(planetFactsLabel[i]);
+      deselectLabel(planetFactsLabel[i]);
     }
   }
 }
@@ -150,12 +137,6 @@ function changeContentContainerBackground(
     currentPlanetData.color;
 }
 
-function selectOverviewContainer(contentContainer, currentPlanetData) {
-  const overviewContainer = contentContainer[0];
-  overviewContainer.classList.remove("content-container--selected");
-  overviewContainer.style.background = currentPlanetData.color;
-}
-
 function addOrRemoveContainerHoverClass(e, eventName) {
   const target = e.target.closest(".planet-info__content-container");
   if (!target) return;
@@ -172,14 +153,14 @@ function addOrRemoveContainerHoverClass(e, eventName) {
 
 function isViewportWidthBelowThreshold() {
   const viewportWidth = window.innerWidth;
-  if (viewportWidth < 1104) return true;
+  return viewportWidth < 1104 ? true : false;
 }
 
 function isTouchDevice() {
   return "ontouchstart" in window ? true : false;
 }
 
-function handleHeaderPlanetsMouseover(e, planets) {
+function handleHeaderPlanetsHover(e, planets, eventType) {
   if (!e.target.classList.contains("header__planet")) return;
 
   // If the viewport width is less than 1104px, then do nothing
@@ -188,27 +169,21 @@ function handleHeaderPlanetsMouseover(e, planets) {
   // If the device is a touch device, then do nothing
   if (isTouchDevice()) return;
 
-  // Find the data for the 'header__planet' that was hovered
-  const headerPlanetName = e.target.textContent.toLowerCase();
-  const headerPlanetData = planets.find(
-    (planet) => planet.name.toLowerCase() === headerPlanetName
-  );
+  if (eventType === "mouseover") {
+    // Find the data for the 'header__planet' that was hovered
+    const headerPlanetName = e.target.textContent.toLowerCase();
+    const headerPlanetData = planets.find(
+      (planet) => planet.name.toLowerCase() === headerPlanetName
+    );
 
-  // Change the border-top color of the 'header__planet' to that planet's color
-  e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
-}
+    // Change the border-top color of the 'header__planet' to that planet's color
+    e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
+  }
 
-function handleHeaderPlanetsMouseout(e) {
-  if (!e.target.classList.contains("header__planet")) return;
-
-  // If the viewport width is less than 1104px, then do nothing
-  if (isViewportWidthBelowThreshold()) return;
-
-  // If the device is a touch device, then do nothing
-  if (isTouchDevice()) return;
-
-  // Change the border-top color of the 'header__planet' that was just hovered back to transparent
-  e.target.style.borderTop = "0.4rem solid transparent";
+  if (eventType === "mouseout") {
+    // Change the border-top color of the 'header__planet' that was just hovered back to transparent
+    e.target.style.borderTop = "0.4rem solid transparent";
+  }
 }
 
 function changeHeaderPlanetColor(
@@ -250,9 +225,7 @@ export {
   hideFactsAndInfo,
   selectContainer,
   changeContentContainerBackground,
-  selectOverviewContainer,
   addOrRemoveContainerHoverClass,
-  handleHeaderPlanetsMouseover,
-  handleHeaderPlanetsMouseout,
+  handleHeaderPlanetsHover,
   changeHeaderPlanetColor,
 };
