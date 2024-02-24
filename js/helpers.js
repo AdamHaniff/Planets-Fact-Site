@@ -162,6 +162,7 @@ function isTouchDevice() {
 
 function handleHeaderPlanetsHover(e, planets, eventType) {
   if (!e.target.classList.contains("header__planet")) return;
+  const headerPlanetContainer = e.target.closest(".header__planet-container");
 
   // If the viewport width is less than 1104px, then do nothing
   if (isViewportWidthBelowThreshold()) return;
@@ -176,13 +177,13 @@ function handleHeaderPlanetsHover(e, planets, eventType) {
       (planet) => planet.name.toLowerCase() === headerPlanetName
     );
 
-    // Change the border-top color of the 'header__planet' to that planet's color
-    e.target.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
+    // Change the border-top color of the target element's parent container to that planet's color
+    headerPlanetContainer.style.borderTop = `0.4rem solid ${headerPlanetData.color}`;
   }
 
   if (eventType === "mouseout") {
-    // Change the border-top color of the 'header__planet' that was just hovered back to transparent
-    e.target.style.borderTop = "0.4rem solid transparent";
+    // For the target element that was just hovered, change the border-top of its parent container back to transparent
+    headerPlanetContainer.style.borderTop = "0.4rem solid transparent";
   }
 }
 

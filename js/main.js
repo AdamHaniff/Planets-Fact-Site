@@ -30,9 +30,6 @@ const headerPlanet = document.querySelectorAll(".header__planet");
 const planetFacts = document.querySelector(".planet-facts");
 const planetInfo = document.querySelector(".planet-info");
 const planetFactsLabel = document.querySelectorAll(".planet-facts__label");
-const planetFactsLabelContainer = document.querySelectorAll(
-  ".planet-facts__label-container"
-);
 const planetImage = document.querySelector(".planet-info__img");
 const planetName = document.querySelector(".planet-info__name");
 const planetDetails = document.querySelector(".planet-info__details");

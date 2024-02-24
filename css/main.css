@@ -342,9 +342,11 @@ body {
   .header__planets {
     padding: 0 4.1rem 2.7rem 0;
   }
-  .header__planet {
-    padding-top: 2.9rem;
+  .header__planet-container {
     border-top: 0.4rem solid transparent;
+  }
+  .header__planet {
+    margin-top: 2.9rem;
   }
   .planet-info {
     padding: 11.05rem 9.45rem 5.15rem;
