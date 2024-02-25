@@ -4,6 +4,16 @@ function changeLabelContainerBorderColor(labelContainer, color) {
   labelContainer.style.borderBottom = `0.4rem solid ${color}`;
 }
 
+function makeLabelWhite(label) {
+  label.classList.remove("label--not-selected");
+  label.classList.add("label--selected");
+}
+
+function makeLabelWhite50Percent(label) {
+  label.classList.remove("label--selected");
+  label.classList.add("label--not-selected");
+}
+
 function selectLabel(target, currentPlanetData) {
   makeLabelWhite(target);
 
@@ -24,24 +34,15 @@ function deselectLabel(label) {
   );
 }
 
-function makeLabelWhite(label) {
-  label.classList.remove("label--not-selected");
-  label.classList.add("label--selected");
-}
-
-function makeLabelWhite50Percent(label) {
-  label.classList.remove("label--selected");
-  label.classList.add("label--not-selected");
-}
-
-function updatePlanetFactsLabel(planetFactsLabel, currentPlanetData) {
+function selectFirstPlanetFactsLabel(planetFactsLabel, currentPlanetData) {
   for (let label of planetFactsLabel) {
+    // Deselect the currently selected label
     if (label.classList.contains("label--selected")) {
       deselectLabel(label);
     }
   }
 
-  // Make the first 'planetFactsLabel' white and change the label container's border-bottom color to that planet's color
+  // Make the first 'planetFactsLabel' white and change the first label container's border-bottom color to that planet's color
   selectLabel(planetFactsLabel[0], currentPlanetData);
 }
 
@@ -219,7 +220,7 @@ export {
   removeElement,
   insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
-  updatePlanetFactsLabel,
+  selectFirstPlanetFactsLabel,
   hideSidebar,
   displaySidebar,
   displayFactsAndInfo,

@@ -4,7 +4,7 @@ import {
   removeElement,
   insertPlanetSurfaceImage,
   selectLabelAndLabelContainer,
-  updatePlanetFactsLabel,
+  selectFirstPlanetFactsLabel,
   hideSidebar,
   displaySidebar,
   displayFactsAndInfo,
@@ -189,15 +189,8 @@ function handleSidebarPlanetClick(e) {
   // Change color of 'headerMenuIcon' and hide the 'sidebar'
   hideSidebar(headerMenuIcon, sidebar);
 
-  // Deselect the label that is currently selected and remove the border-bottom from that label's container
-  for (let label of planetFactsLabel) {
-    if (label.classList.contains("label--selected")) {
-      deselectLabel(label);
-    }
-  }
-
-  // Select the overview label and change the border-bottom color of the label's container to the planet's color
-  selectLabel(planetFactsLabel[0], currentPlanetData);
+  // Make the first 'planetFactsLabel' white and change the first label container's border-bottom color to that planet's color
+  selectFirstPlanetFactsLabel(planetFactsLabel, currentPlanetData);
 
   // Update HTML in 'planetInfo'
   updateHTML();
@@ -251,8 +244,8 @@ function handleHeaderPlanetsClick(e) {
     target
   );
 
-  // Select first 'planetFactsLabel'
-  updatePlanetFactsLabel(planetFactsLabel, currentPlanetData);
+  // Make the first 'planetFactsLabel' white and change the first label container's border-bottom color to that planet's color
+  selectFirstPlanetFactsLabel(planetFactsLabel, currentPlanetData);
 
   // Select the overview container and change its background color to the new planet's color
   changeContentContainerBackground(
