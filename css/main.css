@@ -240,7 +240,6 @@ body {
   .header__planets {
     display: flex;
     gap: 3.3rem;
-    list-style: none;
     font-family: "League Spartan", sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
@@ -251,6 +250,9 @@ body {
   }
   .header__planet-container {
     border-top: 0.4rem solid transparent;
+  }
+  .header__planet {
+    display: inline-block;
   }
   .planet-info {
     padding: 14.6rem 4rem 3.6rem;

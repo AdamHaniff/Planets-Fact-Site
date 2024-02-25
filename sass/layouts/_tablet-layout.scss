@@ -21,7 +21,6 @@
     &__planets {
       display: flex;
       gap: 3.3rem;
-      list-style: none;
       font-family: $font-leagueSpartan;
       font-size: 1.4rem;
       font-weight: $fw-700;
@@ -33,6 +32,10 @@
 
     &__planet-container {
       border-top: 0.4rem solid transparent;
+    }
+
+    &__planet {
+      display: inline-block;
     }
   }
 
